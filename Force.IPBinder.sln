@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Force.IPBinder", "Force.IPB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tarsier.Database", "Tarsier.Database\Tarsier.Database.csproj", "{FCEA3A2C-C144-4028-9D28-961EDB0FFDDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tarsier.Networks", "Tarsier.Networks\Tarsier.Networks.csproj", "{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{FCEA3A2C-C144-4028-9D28-961EDB0FFDDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCEA3A2C-C144-4028-9D28-961EDB0FFDDE}.Release|x86.ActiveCfg = Release|x86
 		{FCEA3A2C-C144-4028-9D28-961EDB0FFDDE}.Release|x86.Build.0 = Release|x86
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B7FFA0E-462E-4BE2-82C8-514CDF6DB2E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
