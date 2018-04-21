@@ -127,7 +127,7 @@
             // 
             this.menuAddForce.Image = ((System.Drawing.Image)(resources.GetObject("menuAddForce.Image")));
             this.menuAddForce.Name = "menuAddForce";
-            this.menuAddForce.Size = new System.Drawing.Size(152, 22);
+            this.menuAddForce.Size = new System.Drawing.Size(136, 22);
             this.menuAddForce.Tag = "ADD_FORCE";
             this.menuAddForce.Text = "Add && Bind";
             this.menuAddForce.Click += new System.EventHandler(this.Menus_Click);
@@ -136,7 +136,7 @@
             // 
             this.menuRemove.Image = ((System.Drawing.Image)(resources.GetObject("menuRemove.Image")));
             this.menuRemove.Name = "menuRemove";
-            this.menuRemove.Size = new System.Drawing.Size(152, 22);
+            this.menuRemove.Size = new System.Drawing.Size(136, 22);
             this.menuRemove.Tag = "REMOVE";
             this.menuRemove.Text = "Remove";
             this.menuRemove.Click += new System.EventHandler(this.Menus_Click);
@@ -144,13 +144,13 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
             // 
             // menuClear
             // 
             this.menuClear.Image = ((System.Drawing.Image)(resources.GetObject("menuClear.Image")));
             this.menuClear.Name = "menuClear";
-            this.menuClear.Size = new System.Drawing.Size(152, 22);
+            this.menuClear.Size = new System.Drawing.Size(136, 22);
             this.menuClear.Tag = "CLEAR";
             this.menuClear.Text = "Clear All";
             this.menuClear.Click += new System.EventHandler(this.Menus_Click);
@@ -158,13 +158,13 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(133, 6);
             // 
             // menuExit
             // 
             this.menuExit.Image = ((System.Drawing.Image)(resources.GetObject("menuExit.Image")));
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Size = new System.Drawing.Size(136, 22);
             this.menuExit.Tag = "EXIT";
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.Menus_Click);
@@ -182,7 +182,7 @@
             this.menuOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuOptions.Image")));
             this.menuOptions.Name = "menuOptions";
             this.menuOptions.Size = new System.Drawing.Size(152, 22);
-            this.menuOptions.Tag = "OPTION";
+            this.menuOptions.Tag = "OPTIONS";
             this.menuOptions.Text = "Options";
             this.menuOptions.Click += new System.EventHandler(this.Menus_Click);
             // 
@@ -228,13 +228,13 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(120, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // menuXPLook
             // 
             this.menuXPLook.CheckOnClick = true;
             this.menuXPLook.Name = "menuXPLook";
-            this.menuXPLook.Size = new System.Drawing.Size(123, 22);
+            this.menuXPLook.Size = new System.Drawing.Size(152, 22);
             this.menuXPLook.Text = "XP Look";
             this.menuXPLook.Click += new System.EventHandler(this.Menus_Click);
             // 
@@ -343,7 +343,7 @@
             this.btnOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(23, 22);
-            this.btnOptions.Tag = "OPTION";
+            this.btnOptions.Tag = "OPTIONS";
             this.btnOptions.Text = "System options";
             this.btnOptions.Click += new System.EventHandler(this.Buttons_Click);
             // 

@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Force.IPBinder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Force IP-Binder/ Tarsier GUI")]
+[assembly: AssemblyDescription("Binding other application to use a specific network interface / IP address.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Tarsier Solutions")]
 [assembly: AssemblyProduct("Force.IPBinder")]
