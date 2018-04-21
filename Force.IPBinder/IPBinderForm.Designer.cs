@@ -50,11 +50,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageBindList = new System.Windows.Forms.TabPage();
-            this.listViewBind = new System.Windows.Forms.ListView();
-            this.columnHeaderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
@@ -82,7 +77,13 @@
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeaderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuGridlines = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
             this.statusStripBind.SuspendLayout();
@@ -112,7 +113,9 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolbar,
-            this.menuStatusbar});
+            this.menuStatusbar,
+            this.toolStripSeparator4,
+            this.menuGridlines});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -357,53 +360,16 @@
             // 
             // tabPageBindList
             // 
-            this.tabPageBindList.Controls.Add(this.listViewBind);
+            this.tabPageBindList.Controls.Add(this.listView1);
             this.tabPageBindList.Controls.Add(this.panelBindlist);
             this.tabPageBindList.ImageIndex = 1;
             this.tabPageBindList.Location = new System.Drawing.Point(4, 23);
             this.tabPageBindList.Name = "tabPageBindList";
             this.tabPageBindList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBindList.Size = new System.Drawing.Size(571, 261);
+            this.tabPageBindList.Size = new System.Drawing.Size(571, 225);
             this.tabPageBindList.TabIndex = 1;
             this.tabPageBindList.Text = "Bind List";
             this.tabPageBindList.UseVisualStyleBackColor = true;
-            // 
-            // listViewBind
-            // 
-            this.listViewBind.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderID,
-            this.columnHeaderIP,
-            this.columnHeaderPath,
-            this.columnHeaderAutoBind,
-            this.columnHeaderDesc});
-            this.listViewBind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewBind.GridLines = true;
-            this.listViewBind.Location = new System.Drawing.Point(3, 33);
-            this.listViewBind.Name = "listViewBind";
-            this.listViewBind.Size = new System.Drawing.Size(565, 225);
-            this.listViewBind.TabIndex = 0;
-            this.listViewBind.UseCompatibleStateImageBehavior = false;
-            this.listViewBind.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderID
-            // 
-            this.columnHeaderID.Text = "#";
-            this.columnHeaderID.Width = 37;
-            // 
-            // columnHeaderIP
-            // 
-            this.columnHeaderIP.Text = "IP Address/GUID";
-            this.columnHeaderIP.Width = 114;
-            // 
-            // columnHeaderPath
-            // 
-            this.columnHeaderPath.Text = "Path";
-            this.columnHeaderPath.Width = 279;
-            // 
-            // columnHeaderAutoBind
-            // 
-            this.columnHeaderAutoBind.Text = "Auto Bind";
-            this.columnHeaderAutoBind.Width = 62;
             // 
             // panelBindlist
             // 
@@ -435,7 +401,7 @@
             this.tabPageCommand.Location = new System.Drawing.Point(4, 23);
             this.tabPageCommand.Name = "tabPageCommand";
             this.tabPageCommand.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCommand.Size = new System.Drawing.Size(571, 261);
+            this.tabPageCommand.Size = new System.Drawing.Size(571, 225);
             this.tabPageCommand.TabIndex = 2;
             this.tabPageCommand.Text = "Commands";
             this.tabPageCommand.UseVisualStyleBackColor = true;
@@ -662,9 +628,52 @@
             this.menuOptions.Tag = "OPTION";
             this.menuOptions.Text = "Options";
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderID,
+            this.columnHeaderDesc,
+            this.columnHeaderPath,
+            this.columnHeaderAutoBind});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(3, 33);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(565, 189);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderID
+            // 
+            this.columnHeaderID.Text = "#";
+            this.columnHeaderID.Width = 41;
+            // 
             // columnHeaderDesc
             // 
             this.columnHeaderDesc.Text = "Description";
+            this.columnHeaderDesc.Width = 186;
+            // 
+            // columnHeaderPath
+            // 
+            this.columnHeaderPath.Text = "Application Path";
+            this.columnHeaderPath.Width = 263;
+            // 
+            // columnHeaderAutoBind
+            // 
+            this.columnHeaderAutoBind.Text = "Auto Bind";
+            // 
+            // menuGridlines
+            // 
+            this.menuGridlines.Name = "menuGridlines";
+            this.menuGridlines.Size = new System.Drawing.Size(152, 22);
+            this.menuGridlines.Tag = "Gridlines";
+            this.menuGridlines.Text = "Gridlines";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // IPBinderForm
             // 
@@ -722,11 +731,6 @@
         private System.Windows.Forms.TabControl tabControlBind;
         private System.Windows.Forms.TabPage tabPageNewBind;
         private System.Windows.Forms.TabPage tabPageBindList;
-        private System.Windows.Forms.ListView listViewBind;
-        private System.Windows.Forms.ColumnHeader columnHeaderID;
-        private System.Windows.Forms.ColumnHeader columnHeaderIP;
-        private System.Windows.Forms.ColumnHeader columnHeaderPath;
-        private System.Windows.Forms.ColumnHeader columnHeaderAutoBind;
         private System.Windows.Forms.Panel panelBindlist;
         private System.Windows.Forms.TabPage tabPageCommand;
         private System.Windows.Forms.Button btnIPConfig;
@@ -763,7 +767,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuOptions;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeaderID;
         private System.Windows.Forms.ColumnHeader columnHeaderDesc;
+        private System.Windows.Forms.ColumnHeader columnHeaderPath;
+        private System.Windows.Forms.ColumnHeader columnHeaderAutoBind;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem menuGridlines;
     }
 }
 
