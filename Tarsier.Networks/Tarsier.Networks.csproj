@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterInfo.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="NetworksAdapterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
