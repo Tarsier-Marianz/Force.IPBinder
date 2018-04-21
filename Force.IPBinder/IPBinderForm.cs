@@ -1,4 +1,5 @@
 ﻿using Force.IPBinder.Enums;
+using Force.IPBinder.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,6 +75,58 @@ namespace Force.IPBinder {
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        private void Action(string tag) {
+            switch(tag) {
+                case "ADD":
+                    
+                    break;
+                case "REMOVE":
+                    if(!string.IsNullOrEmpty("")) {
+                       // if(MessageBox.Show(Messages.REMOVE, "Remove Credential", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes)) {
+                           
+                        //}
+                    }
+                    break;
+                case "CLEAR":
+                   // if(MessageBox.Show(Messages.CLEAR, "Clear Credentials", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes)) {
+                       
+                   // }
+                    break;
+                case "OPTIONS":
+                    using(OptionForm opt = new OptionForm()) {
+                        opt.ShowDialog();
+                    }
+                    break;
+                case "HELP":
+                    using(HelpForm h = new HelpForm()) {
+                        h.ShowDialog();
+                    }
+                    break;
+                case "EXIT":
+                    Close();
+                    break;
+                case "ABOUT":
+                    using(AboutForm a = new AboutForm()) {
+                        a.ShowDialog();
+                    }
+                    break;
+                case "Toolbar":
+                    //RegConfig.Set<bool>("Toolbar", menuToolbar.Checked);
+                    //toolStripPwd.Visible = menuToolbar.Checked;
+                    break;
+                case "Statusbar":
+                    //RegConfig.Set<bool>("Statusbar", menuStatus.Checked);
+                    //statusStripPwd.Visible = menuStatus.Checked;
+                    break;
+                case "XPLOOK":
+                    //RegConfig.Set<bool>("XPLook", menuXPLook.Checked);
+                    Application.Restart();
+                    break;
+                default:
+                    break;
+            }
+        }
         private void IPBinderForm_Load(object sender, EventArgs e) {
             InitializeNetLocale();
         }
@@ -81,9 +134,32 @@ namespace Force.IPBinder {
         private void cboxLocales_SelectedIndexChanged(object sender, EventArgs e) {
             InitializeIPs((NetworkLocale)cboxLocales.SelectedIndex);
         }
+       
 
-        private void toolStripButton2_Click(object sender, EventArgs e) {
-
+        private void Menus_Click(object sender, EventArgs e) {
+            ToolStripMenuItem menu = sender as ToolStripMenuItem;
+            if(menu != null) {
+                if(menu.Tag != null) {
+                    Action(menu.Tag.ToString());
+                }
+            }
         }
+
+        private void Buttons_Click(object sender, EventArgs e) {
+            ToolStripButton tbtn = sender as ToolStripButton;
+            if(tbtn != null) {
+                if(tbtn.Tag != null) {
+                    Action(tbtn.Tag.ToString());
+                }
+            } else {
+                Button btn = sender as Button;
+                if(btn != null) {
+                    if(btn.Tag != null) {
+                        Action(btn.Tag.ToString());
+                    }
+                }
+            }
+        }
+      
     }
 }

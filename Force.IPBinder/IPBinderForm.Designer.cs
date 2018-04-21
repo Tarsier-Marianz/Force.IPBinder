@@ -26,30 +26,57 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IPBinderForm));
             this.menuStripBind = new System.Windows.Forms.MenuStrip();
+            this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAddForce = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolbar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStatusbar = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGridlines = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuXPLook = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuForceBindIP = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBind = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnRemove = new System.Windows.Forms.ToolStripButton();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.btnOptions = new System.Windows.Forms.ToolStripButton();
+            this.btnHelp = new System.Windows.Forms.ToolStripButton();
+            this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.statusStripBind = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControlBind = new System.Windows.Forms.TabControl();
             this.tabPageNewBind = new System.Windows.Forms.TabPage();
+            this.btnAddForce = new System.Windows.Forms.Button();
+            this.chkAutoBind = new System.Windows.Forms.CheckBox();
+            this.chkEnableDelay = new System.Windows.Forms.CheckBox();
             this.cboxLocales = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboxIPAddress = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.txtExeFile = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblIPAdd = new System.Windows.Forms.Label();
+            this.imgListBind = new System.Windows.Forms.ImageList(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageBindList = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeaderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
@@ -58,32 +85,6 @@
             this.btnIPConfigRenew = new System.Windows.Forms.Button();
             this.btnIPConfigRelease = new System.Windows.Forms.Button();
             this.btnIPConfig = new System.Windows.Forms.Button();
-            this.chkEnableDelay = new System.Windows.Forms.CheckBox();
-            this.chkAutoBind = new System.Windows.Forms.CheckBox();
-            this.btnOptions = new System.Windows.Forms.ToolStripButton();
-            this.btnAddForce = new System.Windows.Forms.Button();
-            this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAddForce = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.btnHelp = new System.Windows.Forms.ToolStripButton();
-            this.btnExit = new System.Windows.Forms.ToolStripButton();
-            this.imgListBind = new System.Windows.Forms.ImageList(this.components);
-            this.menuForceBindIP = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeaderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.menuGridlines = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
             this.statusStripBind.SuspendLayout();
@@ -109,30 +110,133 @@
             this.menuStripBind.TabIndex = 0;
             this.menuStripBind.Text = "menuStrip1";
             // 
+            // actionToolStripMenuItem
+            // 
+            this.actionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAddForce,
+            this.menuRemove,
+            this.toolStripSeparator2,
+            this.menuClear,
+            this.toolStripSeparator3,
+            this.menuExit});
+            this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
+            this.actionToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.actionToolStripMenuItem.Text = "Bind";
+            // 
+            // menuAddForce
+            // 
+            this.menuAddForce.Image = ((System.Drawing.Image)(resources.GetObject("menuAddForce.Image")));
+            this.menuAddForce.Name = "menuAddForce";
+            this.menuAddForce.Size = new System.Drawing.Size(152, 22);
+            this.menuAddForce.Tag = "ADD_FORCE";
+            this.menuAddForce.Text = "Add && Bind";
+            this.menuAddForce.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // menuRemove
+            // 
+            this.menuRemove.Image = ((System.Drawing.Image)(resources.GetObject("menuRemove.Image")));
+            this.menuRemove.Name = "menuRemove";
+            this.menuRemove.Size = new System.Drawing.Size(152, 22);
+            this.menuRemove.Tag = "REMOVE";
+            this.menuRemove.Text = "Remove";
+            this.menuRemove.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // menuClear
+            // 
+            this.menuClear.Image = ((System.Drawing.Image)(resources.GetObject("menuClear.Image")));
+            this.menuClear.Name = "menuClear";
+            this.menuClear.Size = new System.Drawing.Size(152, 22);
+            this.menuClear.Tag = "CLEAR";
+            this.menuClear.Text = "Clear All";
+            this.menuClear.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // menuExit
+            // 
+            this.menuExit.Image = ((System.Drawing.Image)(resources.GetObject("menuExit.Image")));
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Tag = "EXIT";
+            this.menuExit.Text = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuOptions});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // menuOptions
+            // 
+            this.menuOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuOptions.Image")));
+            this.menuOptions.Name = "menuOptions";
+            this.menuOptions.Size = new System.Drawing.Size(152, 22);
+            this.menuOptions.Tag = "OPTION";
+            this.menuOptions.Text = "Options";
+            this.menuOptions.Click += new System.EventHandler(this.Menus_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolbar,
             this.menuStatusbar,
+            this.menuGridlines,
             this.toolStripSeparator4,
-            this.menuGridlines});
+            this.menuXPLook});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // menuToolbar
             // 
+            this.menuToolbar.CheckOnClick = true;
             this.menuToolbar.Name = "menuToolbar";
             this.menuToolbar.Size = new System.Drawing.Size(152, 22);
             this.menuToolbar.Tag = "Toolbar";
             this.menuToolbar.Text = "Toolbar";
+            this.menuToolbar.Click += new System.EventHandler(this.Menus_Click);
             // 
             // menuStatusbar
             // 
+            this.menuStatusbar.CheckOnClick = true;
             this.menuStatusbar.Name = "menuStatusbar";
             this.menuStatusbar.Size = new System.Drawing.Size(152, 22);
             this.menuStatusbar.Tag = "Statusbar";
             this.menuStatusbar.Text = "Statusbar";
+            this.menuStatusbar.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // menuGridlines
+            // 
+            this.menuGridlines.CheckOnClick = true;
+            this.menuGridlines.Name = "menuGridlines";
+            this.menuGridlines.Size = new System.Drawing.Size(152, 22);
+            this.menuGridlines.Tag = "Gridlines";
+            this.menuGridlines.Text = "Gridlines";
+            this.menuGridlines.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(120, 6);
+            // 
+            // menuXPLook
+            // 
+            this.menuXPLook.CheckOnClick = true;
+            this.menuXPLook.Name = "menuXPLook";
+            this.menuXPLook.Size = new System.Drawing.Size(123, 22);
+            this.menuXPLook.Text = "XP Look";
+            this.menuXPLook.Click += new System.EventHandler(this.Menus_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -145,6 +249,20 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // menuForceBindIP
+            // 
+            this.menuForceBindIP.Image = ((System.Drawing.Image)(resources.GetObject("menuForceBindIP.Image")));
+            this.menuForceBindIP.Name = "menuForceBindIP";
+            this.menuForceBindIP.Size = new System.Drawing.Size(162, 22);
+            this.menuForceBindIP.Tag = "FORCEBIND_SITE";
+            this.menuForceBindIP.Text = "Force BindIP Site";
+            this.menuForceBindIP.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
+            // 
             // menuHelp
             // 
             this.menuHelp.Image = ((System.Drawing.Image)(resources.GetObject("menuHelp.Image")));
@@ -152,6 +270,7 @@
             this.menuHelp.Size = new System.Drawing.Size(162, 22);
             this.menuHelp.Tag = "HELP";
             this.menuHelp.Text = "Documentation";
+            this.menuHelp.Click += new System.EventHandler(this.Menus_Click);
             // 
             // menuAbout
             // 
@@ -160,6 +279,7 @@
             this.menuAbout.Size = new System.Drawing.Size(162, 22);
             this.menuAbout.Tag = "ABOUT";
             this.menuAbout.Text = "About";
+            this.menuAbout.Click += new System.EventHandler(this.Menus_Click);
             // 
             // toolStripBind
             // 
@@ -186,7 +306,7 @@
             this.btnAdd.Size = new System.Drawing.Size(23, 22);
             this.btnAdd.Tag = "ADD_FORCE";
             this.btnAdd.Text = "Add and force bind IP address";
-            this.btnAdd.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnAdd.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // btnRemove
             // 
@@ -197,7 +317,7 @@
             this.btnRemove.Size = new System.Drawing.Size(23, 22);
             this.btnRemove.Tag = "REMOVE";
             this.btnRemove.Text = "Remove selected bind application in list";
-            this.btnRemove.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnRemove.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // btnClear
             // 
@@ -208,7 +328,46 @@
             this.btnClear.Size = new System.Drawing.Size(23, 22);
             this.btnClear.Tag = "CLEAR";
             this.btnClear.Text = "Clear all binded application in list";
-            this.btnClear.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnClear.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(16, 22);
+            this.toolStripLabel1.Text = "   ";
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOptions.Image")));
+            this.btnOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(23, 22);
+            this.btnOptions.Tag = "OPTION";
+            this.btnOptions.Text = "System options";
+            this.btnOptions.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(23, 22);
+            this.btnHelp.Tag = "HELP";
+            this.btnHelp.Text = "Documentation";
+            this.btnHelp.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(23, 22);
+            this.btnExit.Tag = "EXIT";
+            this.btnExit.Text = "Exit application";
+            this.btnExit.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // statusStripBind
             // 
@@ -247,7 +406,7 @@
             this.tabPageNewBind.Controls.Add(this.cboxLocales);
             this.tabPageNewBind.Controls.Add(this.label6);
             this.tabPageNewBind.Controls.Add(this.cboxIPAddress);
-            this.tabPageNewBind.Controls.Add(this.button3);
+            this.tabPageNewBind.Controls.Add(this.btnBrowse);
             this.tabPageNewBind.Controls.Add(this.txtExeFile);
             this.tabPageNewBind.Controls.Add(this.label5);
             this.tabPageNewBind.Controls.Add(this.lblIPAdd);
@@ -260,6 +419,43 @@
             this.tabPageNewBind.TabIndex = 0;
             this.tabPageNewBind.Text = "New Bind";
             this.tabPageNewBind.UseVisualStyleBackColor = true;
+            // 
+            // btnAddForce
+            // 
+            this.btnAddForce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddForce.Image = ((System.Drawing.Image)(resources.GetObject("btnAddForce.Image")));
+            this.btnAddForce.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAddForce.Location = new System.Drawing.Point(439, 152);
+            this.btnAddForce.Name = "btnAddForce";
+            this.btnAddForce.Size = new System.Drawing.Size(105, 45);
+            this.btnAddForce.TabIndex = 12;
+            this.btnAddForce.Tag = "ADD_FORCE";
+            this.btnAddForce.Text = "Add && Force Bind";
+            this.btnAddForce.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddForce.UseVisualStyleBackColor = true;
+            this.btnAddForce.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // chkAutoBind
+            // 
+            this.chkAutoBind.AutoSize = true;
+            this.chkAutoBind.Location = new System.Drawing.Point(142, 180);
+            this.chkAutoBind.Name = "chkAutoBind";
+            this.chkAutoBind.Size = new System.Drawing.Size(182, 17);
+            this.chkAutoBind.TabIndex = 11;
+            this.chkAutoBind.Tag = "AutoBind";
+            this.chkAutoBind.Text = "Auro bind during window startup";
+            this.chkAutoBind.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableDelay
+            // 
+            this.chkEnableDelay.AutoSize = true;
+            this.chkEnableDelay.Location = new System.Drawing.Point(142, 152);
+            this.chkEnableDelay.Name = "chkEnableDelay";
+            this.chkEnableDelay.Size = new System.Drawing.Size(200, 17);
+            this.chkEnableDelay.TabIndex = 10;
+            this.chkEnableDelay.Tag = "EnableDelay";
+            this.chkEnableDelay.Text = "Enable delay injection (-i) parameter";
+            this.chkEnableDelay.UseVisualStyleBackColor = true;
             // 
             // cboxLocales
             // 
@@ -294,16 +490,18 @@
             this.cboxIPAddress.Size = new System.Drawing.Size(364, 21);
             this.cboxIPAddress.TabIndex = 7;
             // 
-            // button3
+            // btnBrowse
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(513, 105);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 23);
-            this.button3.TabIndex = 6;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowse.Image = ((System.Drawing.Image)(resources.GetObject("btnBrowse.Image")));
+            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBrowse.Location = new System.Drawing.Point(513, 105);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(31, 23);
+            this.btnBrowse.TabIndex = 6;
+            this.btnBrowse.Tag = "BROWSE";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // txtExeFile
             // 
@@ -339,6 +537,21 @@
             this.lblIPAdd.Text = "       Network Card GUID:";
             this.lblIPAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // imgListBind
+            // 
+            this.imgListBind.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListBind.ImageStream")));
+            this.imgListBind.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgListBind.Images.SetKeyName(0, "link.png");
+            this.imgListBind.Images.SetKeyName(1, "computer_link.png");
+            this.imgListBind.Images.SetKeyName(2, "application_xp_terminal.png");
+            this.imgListBind.Images.SetKeyName(3, "network_adapter.png");
+            this.imgListBind.Images.SetKeyName(4, "network_ethernet.png");
+            this.imgListBind.Images.SetKeyName(5, "network_hub.png");
+            this.imgListBind.Images.SetKeyName(6, "network_ip.png");
+            this.imgListBind.Images.SetKeyName(7, "network_tools.png");
+            this.imgListBind.Images.SetKeyName(8, "network_wireless.png");
+            this.imgListBind.Images.SetKeyName(9, "servers_network.png");
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label3);
@@ -370,6 +583,41 @@
             this.tabPageBindList.TabIndex = 1;
             this.tabPageBindList.Text = "Bind List";
             this.tabPageBindList.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderID,
+            this.columnHeaderDesc,
+            this.columnHeaderPath,
+            this.columnHeaderAutoBind});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(3, 33);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(565, 189);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderID
+            // 
+            this.columnHeaderID.Text = "#";
+            this.columnHeaderID.Width = 41;
+            // 
+            // columnHeaderDesc
+            // 
+            this.columnHeaderDesc.Text = "Description";
+            this.columnHeaderDesc.Width = 186;
+            // 
+            // columnHeaderPath
+            // 
+            this.columnHeaderPath.Text = "Application Path";
+            this.columnHeaderPath.Width = 263;
+            // 
+            // columnHeaderAutoBind
+            // 
+            this.columnHeaderAutoBind.Text = "Auto Bind";
             // 
             // panelBindlist
             // 
@@ -455,226 +703,6 @@
             this.btnIPConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIPConfig.UseVisualStyleBackColor = true;
             // 
-            // chkEnableDelay
-            // 
-            this.chkEnableDelay.AutoSize = true;
-            this.chkEnableDelay.Location = new System.Drawing.Point(142, 152);
-            this.chkEnableDelay.Name = "chkEnableDelay";
-            this.chkEnableDelay.Size = new System.Drawing.Size(200, 17);
-            this.chkEnableDelay.TabIndex = 10;
-            this.chkEnableDelay.Tag = "EnableDelay";
-            this.chkEnableDelay.Text = "Enable delay injection (-i) parameter";
-            this.chkEnableDelay.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoBind
-            // 
-            this.chkAutoBind.AutoSize = true;
-            this.chkAutoBind.Location = new System.Drawing.Point(142, 180);
-            this.chkAutoBind.Name = "chkAutoBind";
-            this.chkAutoBind.Size = new System.Drawing.Size(182, 17);
-            this.chkAutoBind.TabIndex = 11;
-            this.chkAutoBind.Tag = "AutoBind";
-            this.chkAutoBind.Text = "Auro bind during window startup";
-            this.chkAutoBind.UseVisualStyleBackColor = true;
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOptions.Image")));
-            this.btnOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(23, 22);
-            this.btnOptions.Tag = "OPTION";
-            this.btnOptions.Text = "System options";
-            this.btnOptions.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // btnAddForce
-            // 
-            this.btnAddForce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddForce.Image = ((System.Drawing.Image)(resources.GetObject("btnAddForce.Image")));
-            this.btnAddForce.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddForce.Location = new System.Drawing.Point(439, 152);
-            this.btnAddForce.Name = "btnAddForce";
-            this.btnAddForce.Size = new System.Drawing.Size(105, 45);
-            this.btnAddForce.TabIndex = 12;
-            this.btnAddForce.Text = "Add && Force Bind";
-            this.btnAddForce.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddForce.UseVisualStyleBackColor = true;
-            // 
-            // actionToolStripMenuItem
-            // 
-            this.actionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuAddForce,
-            this.menuRemove,
-            this.toolStripSeparator2,
-            this.menuClear,
-            this.toolStripSeparator3,
-            this.menuExit});
-            this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
-            this.actionToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.actionToolStripMenuItem.Text = "Bind";
-            // 
-            // menuAddForce
-            // 
-            this.menuAddForce.Image = ((System.Drawing.Image)(resources.GetObject("menuAddForce.Image")));
-            this.menuAddForce.Name = "menuAddForce";
-            this.menuAddForce.Size = new System.Drawing.Size(152, 22);
-            this.menuAddForce.Tag = "ADD_FORCE";
-            this.menuAddForce.Text = "Add && Bind";
-            // 
-            // menuRemove
-            // 
-            this.menuRemove.Image = ((System.Drawing.Image)(resources.GetObject("menuRemove.Image")));
-            this.menuRemove.Name = "menuRemove";
-            this.menuRemove.Size = new System.Drawing.Size(152, 22);
-            this.menuRemove.Tag = "REMOVE";
-            this.menuRemove.Text = "Remove";
-            // 
-            // menuClear
-            // 
-            this.menuClear.Image = ((System.Drawing.Image)(resources.GetObject("menuClear.Image")));
-            this.menuClear.Name = "menuClear";
-            this.menuClear.Size = new System.Drawing.Size(152, 22);
-            this.menuClear.Tag = "CLEAR";
-            this.menuClear.Text = "Clear All";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(16, 22);
-            this.toolStripLabel1.Text = "   ";
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(23, 22);
-            this.btnHelp.Tag = "HELP";
-            this.btnHelp.Text = "Documentation";
-            this.btnHelp.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(23, 22);
-            this.btnExit.Tag = "EXIT";
-            this.btnExit.Text = "Exit application";
-            this.btnExit.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // imgListBind
-            // 
-            this.imgListBind.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListBind.ImageStream")));
-            this.imgListBind.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListBind.Images.SetKeyName(0, "link.png");
-            this.imgListBind.Images.SetKeyName(1, "computer_link.png");
-            this.imgListBind.Images.SetKeyName(2, "application_xp_terminal.png");
-            this.imgListBind.Images.SetKeyName(3, "network_adapter.png");
-            this.imgListBind.Images.SetKeyName(4, "network_ethernet.png");
-            this.imgListBind.Images.SetKeyName(5, "network_hub.png");
-            this.imgListBind.Images.SetKeyName(6, "network_ip.png");
-            this.imgListBind.Images.SetKeyName(7, "network_tools.png");
-            this.imgListBind.Images.SetKeyName(8, "network_wireless.png");
-            this.imgListBind.Images.SetKeyName(9, "servers_network.png");
-            // 
-            // menuForceBindIP
-            // 
-            this.menuForceBindIP.Image = ((System.Drawing.Image)(resources.GetObject("menuForceBindIP.Image")));
-            this.menuForceBindIP.Name = "menuForceBindIP";
-            this.menuForceBindIP.Size = new System.Drawing.Size(162, 22);
-            this.menuForceBindIP.Tag = "FORCEBIND_SITE";
-            this.menuForceBindIP.Text = "Force BindIP Site";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // menuExit
-            // 
-            this.menuExit.Image = ((System.Drawing.Image)(resources.GetObject("menuExit.Image")));
-            this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
-            this.menuExit.Tag = "EXIT";
-            this.menuExit.Text = "Exit";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuOptions});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // menuOptions
-            // 
-            this.menuOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuOptions.Image")));
-            this.menuOptions.Name = "menuOptions";
-            this.menuOptions.Size = new System.Drawing.Size(152, 22);
-            this.menuOptions.Tag = "OPTION";
-            this.menuOptions.Text = "Options";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderID,
-            this.columnHeaderDesc,
-            this.columnHeaderPath,
-            this.columnHeaderAutoBind});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(3, 33);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(565, 189);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderID
-            // 
-            this.columnHeaderID.Text = "#";
-            this.columnHeaderID.Width = 41;
-            // 
-            // columnHeaderDesc
-            // 
-            this.columnHeaderDesc.Text = "Description";
-            this.columnHeaderDesc.Width = 186;
-            // 
-            // columnHeaderPath
-            // 
-            this.columnHeaderPath.Text = "Application Path";
-            this.columnHeaderPath.Width = 263;
-            // 
-            // columnHeaderAutoBind
-            // 
-            this.columnHeaderAutoBind.Text = "Auto Bind";
-            // 
-            // menuGridlines
-            // 
-            this.menuGridlines.Name = "menuGridlines";
-            this.menuGridlines.Size = new System.Drawing.Size(152, 22);
-            this.menuGridlines.Tag = "Gridlines";
-            this.menuGridlines.Text = "Gridlines";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
-            // 
             // IPBinderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,7 +770,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboxIPAddress;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox txtExeFile;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblIPAdd;
@@ -774,6 +802,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderAutoBind;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem menuGridlines;
+        private System.Windows.Forms.ToolStripMenuItem menuXPLook;
     }
 }
 
