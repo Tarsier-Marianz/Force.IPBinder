@@ -80,7 +80,7 @@
             this.LibsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.LibsListView.Location = new System.Drawing.Point(3, 3);
             this.LibsListView.Name = "LibsListView";
-            this.LibsListView.Size = new System.Drawing.Size(379, 156);
+            this.LibsListView.Size = new System.Drawing.Size(379, 137);
             this.LibsListView.TabIndex = 13;
             this.LibsListView.UseCompatibleStateImageBehavior = false;
             this.LibsListView.View = System.Windows.Forms.View.Details;
@@ -136,7 +136,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, -14);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(105, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -160,7 +160,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(385, 162);
+            this.tabPage1.Size = new System.Drawing.Size(385, 143);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dependencies";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -188,9 +188,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(104, 51);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 13);
+            this.label8.Size = new System.Drawing.Size(82, 13);
             this.label8.TabIndex = 19;
-            this.label8.Text = "creating setup file";
+            this.label8.Text = "json conversion";
             // 
             // pictureBox7
             // 
@@ -277,7 +277,7 @@
             this.tabPageLicense.Location = new System.Drawing.Point(4, 22);
             this.tabPageLicense.Name = "tabPageLicense";
             this.tabPageLicense.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLicense.Size = new System.Drawing.Size(385, 162);
+            this.tabPageLicense.Size = new System.Drawing.Size(385, 143);
             this.tabPageLicense.TabIndex = 2;
             this.tabPageLicense.Text = "License";
             this.tabPageLicense.UseVisualStyleBackColor = true;
@@ -290,7 +290,7 @@
             this.txtLicense.Location = new System.Drawing.Point(3, 3);
             this.txtLicense.Name = "txtLicense";
             this.txtLicense.ReadOnly = true;
-            this.txtLicense.Size = new System.Drawing.Size(379, 156);
+            this.txtLicense.Size = new System.Drawing.Size(379, 137);
             this.txtLicense.TabIndex = 0;
             this.txtLicense.Text = "";
             // 

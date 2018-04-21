@@ -1,4 +1,6 @@
 ﻿
+using Force.IPBinder.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,8 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Tarsier.Config;
+using Tarsier.Extensions;
+using Tarsier.Security;
 
 namespace Force.IPBinder.Forms {
     public partial class AboutForm : Form {
@@ -40,7 +44,6 @@ namespace Force.IPBinder.Forms {
             projectsAsm.Add(typeof(SQLiteHelper).Assembly);
             projectsAsm.Add(typeof(StringUtils).Assembly);
             projectsAsm.Add(typeof(SimpleEncryption).Assembly);
-            projectsAsm.Add(typeof(Objects).Assembly);
             foreach(var asm in projectsAsm) {
                 var item = new ListViewItem(asm.GetName().Name);
                 item.ForeColor = Color.Gray;
