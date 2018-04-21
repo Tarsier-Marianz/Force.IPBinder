@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\NetworkLocale.cs" />
     <Compile Include="IPBinderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +67,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +81,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ForceBindIP.ico" />
+    <None Include="Resources\network_adapter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tarsier.Database\Tarsier.Database.csproj">
+      <Project>{fcea3a2c-c144-4028-9d28-961edb0ffdde}</Project>
+      <Name>Tarsier.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tarsier.Networks\Tarsier.Networks.csproj">
+      <Project>{2b7ffa0e-462e-4be2-82c8-514cdf6db2e3}</Project>
+      <Name>Tarsier.Networks</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
