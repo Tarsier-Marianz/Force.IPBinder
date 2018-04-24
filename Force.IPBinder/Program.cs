@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Force.IPBinder.Constants;
+using Force.IPBinder.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,7 +12,11 @@ namespace Force.IPBinder {
         /// </summary>
         [STAThread]
         static void Main() {
-            Application.EnableVisualStyles();
+            Configs _cfgs = new Configs(BindingFile.DatabaseFile);
+            bool xpLook = _cfgs.Get<bool>("XPLook");
+            if(!xpLook) {
+                Application.EnableVisualStyles();
+            }
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new IPBinderForm());
         }
