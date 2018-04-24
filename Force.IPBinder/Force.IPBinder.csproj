@@ -204,6 +204,10 @@
       <Project>{4A2B679B-46AD-454B-A105-3CC66DD31484}</Project>
       <Name>Tarsier.Security</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tarsier.UI\Tarsier.UI.csproj">
+      <Project>{c4a520c9-d48d-4d74-b1d9-b4e758205aa2}</Project>
+      <Name>Tarsier.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

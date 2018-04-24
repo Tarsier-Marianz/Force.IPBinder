@@ -17,12 +17,14 @@ using System.Text;
 using System.Windows.Forms;
 using Tarsier.Networks;
 using Tarsier.Security;
+using Tarsier.UI.Icons;
 
 namespace Force.IPBinder {
     public partial class IPBinderForm : Form {
         private Configs _cfgs = new Configs(BindingFile.DatabaseFile);
         private Bindings _bindings = new Bindings(BindingFile.DatabaseFile);
         private NetworksAdapterInfo _networkInfo;
+        private IconListManager _iconListManager;
         private bool _operationalStatusOnly = false;
         private bool _setPassword = false;
         private string _password = string.Empty;
@@ -33,6 +35,8 @@ namespace Force.IPBinder {
             InitializeComponent();
         }
         private void InitializeOptions() {
+            _iconListManager = new IconListManager(imageList16, IconReader.IconSize.Small);
+
             _cfgs = new Configs(BindingFile.DatabaseFile);
             _setPassword = _cfgs.Get<bool>("SetPassword");
             _operationalStatusOnly = _cfgs.Get<bool>("OperationalStatus");
@@ -69,8 +73,9 @@ namespace Force.IPBinder {
         }
 
         private void InitializeBindings() {
+            _iconListManager.ClearLists(); // to refresh Icon from .exe
             _bindings = new Bindings(BindingFile.DatabaseFile);
-            _bindings.Initialize(listViewBind, false);
+            _bindings.Initialize(listViewBind, _iconListManager);
             ClearSelection();
         }
 
