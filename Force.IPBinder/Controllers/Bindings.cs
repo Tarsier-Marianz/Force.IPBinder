@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Tarsier.Config;
 using Tarsier.Extensions;
 using Tarsier.Security;
+using Tarsier.UI.Icons;
 
 namespace Force.IPBinder.Controllers {
     public class Bindings {
@@ -129,12 +130,12 @@ namespace Force.IPBinder.Controllers {
             sqlite.Delete(defaultTable, string.Format("ID ={0}", id));
         }
 
-        public void Initialize(ListView list, bool hidePassword) {
+        public void Initialize(ListView list, IconListManager _iconListManager) {
             List<BindingIP> pwds = GetBindings();
             if(pwds.Count > 0) {
                 list.Items.Clear();
                 foreach(BindingIP b in pwds) {
-                    ListViewItem item = new ListViewItem(b.ID.ToSafeString(), 0);
+                    ListViewItem item = new ListViewItem(b.ID.ToSafeString(), _iconListManager.AddFileIcon(b.Path));
                     item.UseItemStyleForSubItems = false;
                     item.SubItems.Add(b.Description);
                     item.SubItems.Add(b.Path);
