@@ -74,6 +74,7 @@ namespace Force.IPBinder {
 
         private void InitializeBindings() {
             _iconListManager.ClearLists(); // to refresh Icon from .exe
+            listViewBind.Items.Clear();
             _bindings = new Bindings(BindingFile.DatabaseFile);
             _bindings.Initialize(listViewBind, _iconListManager);
             ClearSelection();

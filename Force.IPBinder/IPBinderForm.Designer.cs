@@ -642,6 +642,7 @@
             this.listViewBind.MultiSelect = false;
             this.listViewBind.Name = "listViewBind";
             this.listViewBind.Size = new System.Drawing.Size(565, 189);
+            this.listViewBind.SmallImageList = this.imageList16;
             this.listViewBind.TabIndex = 2;
             this.listViewBind.UseCompatibleStateImageBehavior = false;
             this.listViewBind.View = System.Windows.Forms.View.Details;
