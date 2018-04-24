@@ -74,6 +74,7 @@
     <Compile Include="AppInfo.cs" />
     <Compile Include="Constants\BindingFile.cs" />
     <Compile Include="Controllers\Bindings.cs" />
+    <Compile Include="Controllers\Commands.cs" />
     <Compile Include="Controllers\Configs.cs" />
     <Compile Include="Enums\NetworkLocale.cs" />
     <Compile Include="Forms\AboutForm.cs">
@@ -106,6 +107,7 @@
     <Compile Include="Forms\PasswordForm.Designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CLIParameters.cs" />
     <Compile Include="Helpers\ForceBind.cs" />
     <Compile Include="Helpers\LicenseViewer.cs" />
     <Compile Include="Helpers\Validator.cs" />

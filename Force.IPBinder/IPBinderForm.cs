@@ -8,13 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using Tarsier.Extensions;
 using Tarsier.Networks;
 using Tarsier.Security;
 using Tarsier.UI.Icons;
@@ -23,10 +26,13 @@ namespace Force.IPBinder {
     public partial class IPBinderForm : Form {
         private Configs _cfgs = new Configs(BindingFile.DatabaseFile);
         private Bindings _bindings = new Bindings(BindingFile.DatabaseFile);
+        private Commands _cmds = new Commands(BindingFile.DatabaseFile);
         private NetworksAdapterInfo _networkInfo;
         private IconListManager _iconListManager;
         private bool _operationalStatusOnly = false;
         private bool _setPassword = false;
+        private bool _isSendingCmd = false;
+        private string _delayInject = string.Empty;
         private string _password = string.Empty;
         private string _selectedId = string.Empty;
         private string _selectedDesc = string.Empty;
@@ -80,8 +86,13 @@ namespace Force.IPBinder {
             ClearSelection();
         }
 
+        private void InitializeCommands() {
+            cboxCommand.Items.Clear();
+            cboxCommand.AutoCompleteCustomSource = _cmds.GetAutoCompleteSource();
+            //cboxCommand.DataSource = _cmds.GetAutoCompleteSource();
+        }
         private void InitializeForceBindIPFile() {
-            string ForceBindIPx86 = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP.exe");
+            string ForceBindIPx86 = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP64.exe");
             if(File.Exists(ForceBindIPx86)) {
                 lblForceBindFind.Text = "Found";
                 lblForceBindFind.ForeColor = Color.Green;
@@ -186,22 +197,30 @@ namespace Force.IPBinder {
 
         private void AddBind(string description, string ipAddress, string path, bool autoBind, bool delay) {
             Cursor.Current = Cursors.WaitCursor;
-            try {
+
+            string forceBindExe = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP64.exe");
+            if(!bgWorker.IsBusy) {
+                btnSend.Enabled = cboxCommand.Enabled = false;
+                bgWorker.RunWorkerAsync(new CLIParameters() {
+                    Filename = "CMD",
+                    Prefix = "/k",
+                    Arguments = string.Format("\"{0}\" {1} \"{2}\"", forceBindExe, ipAddress, path),
+                });
+
                 _bindings.Add(new Models.BindingIP() {
                     Description = description,
                     IPAddress = ipAddress,
                     Path = path,
                     AutoBind = autoBind ? 1 : 0
                 });
-                InitializeBindings();
-                tabControlBind.SelectedIndex = 1;
-            } catch {
-
-            } finally {
-                cboxLocales.SelectedIndex = 0;
-                txtExeFile.Text = string.Empty;
-                Cursor.Current = Cursors.Default;
             }
+
+            InitializeBindings();
+            tabControlBind.SelectedIndex = 1;
+
+            cboxLocales.SelectedIndex = 0;
+            txtExeFile.Text = string.Empty;
+            Cursor.Current = Cursors.Default;
         }
         private void Action(string tag) {
             switch(tag) {
@@ -288,6 +307,45 @@ namespace Force.IPBinder {
                     _cfgs.Set<bool>("XPLook", menuXPLook.Checked);
                     Application.Restart();
                     break;
+                case "SEND":
+                    if(cboxCommand.Text.Length > 0) {
+                        if(!bgWorker.IsBusy) {
+                            btnSend.Enabled = cboxCommand.Enabled = false;
+                            bgWorker.RunWorkerAsync(new CLIParameters() {
+                                Filename = "CMD",
+                                Prefix = "/c ",
+                                Arguments = cboxCommand.Text.Trim()
+                            });
+                        }
+                    }
+                    break;
+                case "ipconfig /all":
+                    if(!bgWorker.IsBusy) {
+                        bgWorker.RunWorkerAsync(new CLIParameters() {
+                            Filename = "CMD",
+                            Prefix = "/k ",
+                            Arguments = cboxCommand.Text.Trim()
+                        });
+                    }
+                    break;
+                case "ipconfig /release":
+                    if(!bgWorker.IsBusy) {
+                        bgWorker.RunWorkerAsync(new CLIParameters() {
+                            Filename = "CMD",
+                            Prefix = "/k ",
+                            Arguments = cboxCommand.Text.Trim()
+                        });
+                    }
+                    break;
+                case "ipconfig /renew":
+                    if(!bgWorker.IsBusy) {
+                        bgWorker.RunWorkerAsync(new CLIParameters() {
+                            Filename = "CMD",
+                            Prefix = "/k ",
+                            Arguments = cboxCommand.Text.Trim()
+                        });
+                    }
+                    break;
                 default:
                     break;
             }
@@ -298,6 +356,15 @@ namespace Force.IPBinder {
             InitializeForceBindIPFile();
             InitializeNetLocale();
             InitializeBindings();
+            InitializeCommands();
+            if(!bgWorker.IsBusy) {
+                btnSend.Enabled = cboxCommand.Enabled = false;
+                bgWorker.RunWorkerAsync(new CLIParameters() {
+                    Filename = "CMD",
+                    Prefix= "/c",
+                    Arguments = string.Empty
+                });
+            }
         }
         protected override void OnFormClosing(FormClosingEventArgs e) {
             if(e.CloseReason.Equals(CloseReason.UserClosing)) {
@@ -344,6 +411,7 @@ namespace Force.IPBinder {
             btnAddForce.Enabled = (tabControlBind.SelectedIndex == 0 && cboxLocales.SelectedIndex >= 0 && cboxIPAddress.Text.Trim().Length > 0 && txtExeFile.Text.Trim().Length > 0);
             btnClear.Enabled = menuClear.Enabled = tabControlBind.SelectedIndex == 1;
             btnRemove.Enabled = menuRemove.Enabled = tabControlBind.SelectedIndex == 1 && listViewBind.SelectedItems.Count > 0;
+            btnSend.Enabled = !_isSendingCmd && cboxCommand.Text.Trim().Length > 0;
         }
 
         private void listViewBind_SelectedIndexChanged(object sender, EventArgs e) {
@@ -372,6 +440,95 @@ namespace Force.IPBinder {
            _selectedDesc =
            _selectedAutoBind = string.Empty;
             btnAutoBindToggle.Visible = false;
+        }
+
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
+            var process = new Process();
+            _isSendingCmd = true;
+            CLIParameters cli = (CLIParameters)e.Argument;
+            string arguments = cli.Arguments;
+            string prefix = cli.Prefix.Trim();
+            process.StartInfo.FileName = cli.Filename;
+            if(!string.IsNullOrEmpty(arguments)) {
+                process.StartInfo.Arguments = prefix + " " + arguments;
+            }
+
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.StartInfo.UseShellExecute = false;
+
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardOutput = true;
+            var stdOutput = new StringBuilder();
+            process.OutputDataReceived += Process_OutputDataReceived;
+            string stdError = null;
+
+            process.Start();
+            process.BeginOutputReadLine();
+            stdError = process.StandardError.ReadToEnd();
+            process.WaitForExit();
+            //AppendResult("File: " + cli.Filename);
+            //AppendResult("Args: " + cli.Arguments);
+
+            if(process.ExitCode == 0) {
+                AppendResult(stdOutput.ToSafeString());
+            } else {
+                //AppendResult(" finished with exit code = " + process.ExitCode);
+                AppendResult(string.Format("'{0}' is not recognized as an internal or external command, operable program or batch file.", arguments));
+            }
+            _cmds.Add(arguments);
+        }
+
+        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e) {
+            AppendResult(e.Data);
+            Thread.Sleep(10);
+        }
+
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            cboxCommand.Text = string.Empty;
+            AppendResult(Environment.NewLine);
+            AppendResult("***************************************************************");
+            AppendResult(Environment.NewLine);
+            InitializeCommands();
+            btnSend.Enabled = cboxCommand.Enabled = true;
+            _isSendingCmd = false;
+            cboxCommand.Focus();
+        }
+
+        private void AppendResult(string message) {
+            if(string.IsNullOrEmpty(message)) return;
+
+            if(listBoxLog.InvokeRequired) {
+                listBoxLog.Invoke((MethodInvoker)delegate () {
+                    listBoxLog.Items.Add(message);
+                    listBoxLog.SelectedIndex = listBoxLog.Items.Count - 1;
+                });
+            } else {
+                listBoxLog.Items.Add(message);
+                listBoxLog.SelectedIndex = listBoxLog.Items.Count - 1;
+            }
+        }
+
+        private void cboxCommand_KeyDown(object sender, KeyEventArgs e) {
+            if(e.KeyCode.Equals(Keys.Enter)) {
+                if(btnSend.Enabled) {
+                    btnSend.PerformClick();
+                }
+            }
+        }
+
+        private void listBoxLog_DrawItem(object sender, DrawItemEventArgs e) {
+            ListBox lb = (ListBox)sender;
+            //e.DrawBackground();
+            string item = lb.Items[e.Index].ToString();
+            Graphics g = e.Graphics;
+            e.DrawBackground();
+            Brush lineBrush = Brushes.White;
+            if(item.Contains("is not recognized")) {
+                lineBrush = new SolidBrush(Color.Red);
+            }
+            g.DrawString(item, e.Font, lineBrush, new PointF(e.Bounds.X, e.Bounds.Y));
+            e.DrawFocusRectangle();
         }
     }
 }

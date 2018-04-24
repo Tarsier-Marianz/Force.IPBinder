@@ -81,16 +81,18 @@
             this.columnHeaderDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList16 = new System.Windows.Forms.ImageList(this.components);
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboxCommand = new System.Windows.Forms.ComboBox();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnIPConfigRenew = new System.Windows.Forms.Button();
-            this.btnIPConfigRelease = new System.Windows.Forms.Button();
-            this.btnIPConfig = new System.Windows.Forms.Button();
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
-            this.imageList16 = new System.Windows.Forms.ImageList(this.components);
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
             this.statusStripBind.SuspendLayout();
@@ -395,7 +397,7 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel1,
             this.lblForceBindFind});
-            this.statusStripBind.Location = new System.Drawing.Point(0, 301);
+            this.statusStripBind.Location = new System.Drawing.Point(0, 304);
             this.statusStripBind.Name = "statusStripBind";
             this.statusStripBind.Size = new System.Drawing.Size(579, 22);
             this.statusStripBind.TabIndex = 2;
@@ -436,7 +438,7 @@
             this.tabControlBind.Location = new System.Drawing.Point(0, 49);
             this.tabControlBind.Name = "tabControlBind";
             this.tabControlBind.SelectedIndex = 0;
-            this.tabControlBind.Size = new System.Drawing.Size(579, 252);
+            this.tabControlBind.Size = new System.Drawing.Size(579, 255);
             this.tabControlBind.TabIndex = 3;
             this.tabControlBind.SelectedIndexChanged += new System.EventHandler(this.tabControlBind_SelectedIndexChanged);
             // 
@@ -667,6 +669,12 @@
             // 
             this.columnHeaderAutoBind.Text = "Auto Bind";
             // 
+            // imageList16
+            // 
+            this.imageList16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16.ImageStream")));
+            this.imageList16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList16.Images.SetKeyName(0, "tick-circle.png");
+            // 
             // panelBindlist
             // 
             this.panelBindlist.Controls.Add(this.label2);
@@ -689,18 +697,73 @@
             // 
             // tabPageCommand
             // 
+            this.tabPageCommand.Controls.Add(this.btnSend);
+            this.tabPageCommand.Controls.Add(this.label4);
+            this.tabPageCommand.Controls.Add(this.cboxCommand);
+            this.tabPageCommand.Controls.Add(this.listBoxLog);
             this.tabPageCommand.Controls.Add(this.panel1);
-            this.tabPageCommand.Controls.Add(this.btnIPConfigRenew);
-            this.tabPageCommand.Controls.Add(this.btnIPConfigRelease);
-            this.tabPageCommand.Controls.Add(this.btnIPConfig);
             this.tabPageCommand.ImageIndex = 2;
             this.tabPageCommand.Location = new System.Drawing.Point(4, 23);
             this.tabPageCommand.Name = "tabPageCommand";
             this.tabPageCommand.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCommand.Size = new System.Drawing.Size(571, 225);
+            this.tabPageCommand.Size = new System.Drawing.Size(571, 228);
             this.tabPageCommand.TabIndex = 2;
             this.tabPageCommand.Text = "Commands";
             this.tabPageCommand.UseVisualStyleBackColor = true;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
+            this.btnSend.Location = new System.Drawing.Point(503, 38);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(62, 23);
+            this.btnSend.TabIndex = 7;
+            this.btnSend.Tag = "SEND";
+            this.btnSend.Text = "Send";
+            this.btnSend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Command:";
+            // 
+            // cboxCommand
+            // 
+            this.cboxCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboxCommand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboxCommand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cboxCommand.FormattingEnabled = true;
+            this.cboxCommand.Location = new System.Drawing.Point(72, 39);
+            this.cboxCommand.Name = "cboxCommand";
+            this.cboxCommand.Size = new System.Drawing.Size(428, 21);
+            this.cboxCommand.TabIndex = 5;
+            this.cboxCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboxCommand_KeyDown);
+            // 
+            // listBoxLog
+            // 
+            this.listBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxLog.BackColor = System.Drawing.Color.Black;
+            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxLog.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLog.ForeColor = System.Drawing.Color.White;
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.HorizontalScrollbar = true;
+            this.listBoxLog.Location = new System.Drawing.Point(3, 64);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(562, 147);
+            this.listBoxLog.TabIndex = 4;
+            this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
             // 
             // panel1
             // 
@@ -717,56 +780,28 @@
             this.label1.ForeColor = System.Drawing.Color.Gray;
             this.label1.Location = new System.Drawing.Point(11, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(370, 13);
+            this.label1.Size = new System.Drawing.Size(516, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Predefined basic IP configuration commands executed on command prompt.";
-            // 
-            // btnIPConfigRenew
-            // 
-            this.btnIPConfigRenew.Location = new System.Drawing.Point(23, 125);
-            this.btnIPConfigRenew.Name = "btnIPConfigRenew";
-            this.btnIPConfigRenew.Size = new System.Drawing.Size(103, 23);
-            this.btnIPConfigRenew.TabIndex = 2;
-            this.btnIPConfigRenew.Text = "ipconfig /renew";
-            this.btnIPConfigRenew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIPConfigRenew.UseVisualStyleBackColor = true;
-            // 
-            // btnIPConfigRelease
-            // 
-            this.btnIPConfigRelease.Location = new System.Drawing.Point(23, 86);
-            this.btnIPConfigRelease.Name = "btnIPConfigRelease";
-            this.btnIPConfigRelease.Size = new System.Drawing.Size(103, 23);
-            this.btnIPConfigRelease.TabIndex = 1;
-            this.btnIPConfigRelease.Text = "ipconfig /release";
-            this.btnIPConfigRelease.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIPConfigRelease.UseVisualStyleBackColor = true;
-            // 
-            // btnIPConfig
-            // 
-            this.btnIPConfig.Location = new System.Drawing.Point(23, 48);
-            this.btnIPConfig.Name = "btnIPConfig";
-            this.btnIPConfig.Size = new System.Drawing.Size(103, 23);
-            this.btnIPConfig.TabIndex = 0;
-            this.btnIPConfig.Text = "ipconfig /all";
-            this.btnIPConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIPConfig.UseVisualStyleBackColor = true;
+            this.label1.Text = "Enter your command or select predefined basic IP configuration commands executed " +
+    "on command prompt.";
             // 
             // timerCheck
             // 
             this.timerCheck.Enabled = true;
             this.timerCheck.Tick += new System.EventHandler(this.timerCheck_Tick);
             // 
-            // imageList16
+            // bgWorker
             // 
-            this.imageList16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList16.ImageStream")));
-            this.imageList16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList16.Images.SetKeyName(0, "tick-circle.png");
+            this.bgWorker.WorkerReportsProgress = true;
+            this.bgWorker.WorkerSupportsCancellation = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             // 
             // IPBinderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 323);
+            this.ClientSize = new System.Drawing.Size(579, 326);
             this.Controls.Add(this.tabControlBind);
             this.Controls.Add(this.statusStripBind);
             this.Controls.Add(this.toolStripBind);
@@ -793,6 +828,7 @@
             this.panelBindlist.ResumeLayout(false);
             this.panelBindlist.PerformLayout();
             this.tabPageCommand.ResumeLayout(false);
+            this.tabPageCommand.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -820,9 +856,6 @@
         private System.Windows.Forms.TabPage tabPageBindList;
         private System.Windows.Forms.Panel panelBindlist;
         private System.Windows.Forms.TabPage tabPageCommand;
-        private System.Windows.Forms.Button btnIPConfig;
-        private System.Windows.Forms.Button btnIPConfigRenew;
-        private System.Windows.Forms.Button btnIPConfigRelease;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -868,6 +901,11 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripButton btnAutoBindToggle;
         private System.Windows.Forms.ImageList imageList16;
+        private System.ComponentModel.BackgroundWorker bgWorker;
+        private System.Windows.Forms.ListBox listBoxLog;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboxCommand;
     }
 }
 
