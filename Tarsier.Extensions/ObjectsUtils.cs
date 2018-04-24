@@ -10,11 +10,11 @@ namespace Tarsier.Extensions {
             return JsonConvert.SerializeObject(objToSerialize);
         }
 
-        public static T DeserializeT<T>(this string toDeserialize) {
-            if(String.IsNullOrEmpty(toDeserialize)) {
-                return default(T); ;
+        public static T DeserializeT<T>(this string objToDeserialize) {            
+            if(string.IsNullOrEmpty(objToDeserialize)) {
+                return default(T);
             }
-            return (T)JsonConvert.DeserializeObject<T>(toDeserialize);
+            return (T)JsonConvert.DeserializeObject<T>(objToDeserialize);
         }
     }
 }
