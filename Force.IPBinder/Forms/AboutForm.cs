@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -58,7 +59,10 @@ namespace Force.IPBinder.Forms {
         }
 
         private void OpenBrowser_Click(object sender, EventArgs e) {
-
+            PictureBox p = sender as PictureBox;
+            if(p != null) {
+                Process.Start(p.Tag.ToSafeString());
+            }
         }
     }
 }
