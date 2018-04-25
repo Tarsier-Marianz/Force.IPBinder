@@ -177,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ForceBindIP.ico" />
+    <EmbeddedResource Include="ForceBindIP\ForceBindIP-1.32-Setup.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Resources\link_delete.png" />
     <None Include="Resources\link_go.png" />
     <EmbeddedResource Include="SQLite.Interop.dll">

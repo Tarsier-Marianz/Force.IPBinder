@@ -355,8 +355,27 @@ namespace Force.IPBinder {
                 case "arp -a":
                     SendPredefinedCommand(tag);
                     break;
+                case "FORCEBIND_SITE":
+                    Process.Start("https://r1ch.net/projects/forcebindip");
+                    break;
+                case "FORCEBIND_DOWN":
+                    Process.Start("https://r1ch.net/assets/forcebindip/ForceBindIP-1.32-Setup.exe");
+                    break;
+                case "FORCEBIND_INSTALL":
+                    try {
+                        string installer = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP-1.32-Setup.exe");
+                        if(File.Exists(installer)) {
+                            Process.Start(installer);
+                        }
+                    }catch(Win32Exception ex) {
+                        MessageBox.Show(ex.Message, "ForceBindIP Installation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                   
+                    break;
                 default:
                     break;
+
+                    
             }
         }
 

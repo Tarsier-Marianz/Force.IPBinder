@@ -45,6 +45,7 @@
             this.menuXPLook = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuForceBindIP = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadForceBindIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +58,7 @@
             this.btnOptions = new System.Windows.Forms.ToolStripButton();
             this.btnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
+            this.lblVersion = new System.Windows.Forms.ToolStripLabel();
             this.statusStripBind = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -102,7 +104,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
-            this.lblVersion = new System.Windows.Forms.ToolStripLabel();
+            this.installForceBindIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
             this.statusStripBind.SuspendLayout();
@@ -278,6 +280,8 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuForceBindIP,
+            this.installForceBindIPToolStripMenuItem,
+            this.downloadForceBindIPToolStripMenuItem,
             this.toolStripSeparator1,
             this.menuHelp,
             this.menuAbout});
@@ -289,21 +293,30 @@
             // 
             this.menuForceBindIP.Image = ((System.Drawing.Image)(resources.GetObject("menuForceBindIP.Image")));
             this.menuForceBindIP.Name = "menuForceBindIP";
-            this.menuForceBindIP.Size = new System.Drawing.Size(162, 22);
+            this.menuForceBindIP.Size = new System.Drawing.Size(194, 22);
             this.menuForceBindIP.Tag = "FORCEBIND_SITE";
-            this.menuForceBindIP.Text = "Force BindIP Site";
+            this.menuForceBindIP.Text = "ForceBindIP Website";
             this.menuForceBindIP.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // downloadForceBindIPToolStripMenuItem
+            // 
+            this.downloadForceBindIPToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("downloadForceBindIPToolStripMenuItem.Image")));
+            this.downloadForceBindIPToolStripMenuItem.Name = "downloadForceBindIPToolStripMenuItem";
+            this.downloadForceBindIPToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.downloadForceBindIPToolStripMenuItem.Tag = "FORCEBIND_DOWN";
+            this.downloadForceBindIPToolStripMenuItem.Text = "Download ForceBindIP";
+            this.downloadForceBindIPToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
             // 
             // menuHelp
             // 
             this.menuHelp.Image = ((System.Drawing.Image)(resources.GetObject("menuHelp.Image")));
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(162, 22);
+            this.menuHelp.Size = new System.Drawing.Size(194, 22);
             this.menuHelp.Tag = "HELP";
             this.menuHelp.Text = "Documentation";
             this.menuHelp.Click += new System.EventHandler(this.Menus_Click);
@@ -312,7 +325,7 @@
             // 
             this.menuAbout.Image = ((System.Drawing.Image)(resources.GetObject("menuAbout.Image")));
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(162, 22);
+            this.menuAbout.Size = new System.Drawing.Size(194, 22);
             this.menuAbout.Tag = "ABOUT";
             this.menuAbout.Text = "About";
             this.menuAbout.Click += new System.EventHandler(this.Menus_Click);
@@ -417,6 +430,14 @@
             this.btnExit.Tag = "EXIT";
             this.btnExit.Text = "Exit application";
             this.btnExit.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(13, 22);
+            this.lblVersion.Text = "v";
             // 
             // statusStripBind
             // 
@@ -889,13 +910,14 @@
             this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
             this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             // 
-            // lblVersion
+            // installForceBindIPToolStripMenuItem
             // 
-            this.lblVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(13, 22);
-            this.lblVersion.Text = "v";
+            this.installForceBindIPToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("installForceBindIPToolStripMenuItem.Image")));
+            this.installForceBindIPToolStripMenuItem.Name = "installForceBindIPToolStripMenuItem";
+            this.installForceBindIPToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.installForceBindIPToolStripMenuItem.Tag = "FORCEBIND_INSTALL";
+            this.installForceBindIPToolStripMenuItem.Text = "Install ForceBindIP";
+            this.installForceBindIPToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
             // 
             // IPBinderForm
             // 
@@ -1017,6 +1039,8 @@
         private System.Windows.Forms.ToolStripMenuItem ipconfigrenewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arpaToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel lblVersion;
+        private System.Windows.Forms.ToolStripMenuItem downloadForceBindIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem installForceBindIPToolStripMenuItem;
     }
 }
 
