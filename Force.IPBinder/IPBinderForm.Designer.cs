@@ -35,6 +35,8 @@
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuOpenCmd = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolbar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStatusbar = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,7 +182,9 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuOptions});
+            this.menuOptions,
+            this.toolStripSeparator5,
+            this.menuOpenCmd});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -189,10 +193,24 @@
             // 
             this.menuOptions.Image = ((System.Drawing.Image)(resources.GetObject("menuOptions.Image")));
             this.menuOptions.Name = "menuOptions";
-            this.menuOptions.Size = new System.Drawing.Size(116, 22);
+            this.menuOptions.Size = new System.Drawing.Size(206, 22);
             this.menuOptions.Tag = "OPTIONS";
             this.menuOptions.Text = "Options";
             this.menuOptions.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(203, 6);
+            // 
+            // menuOpenCmd
+            // 
+            this.menuOpenCmd.Image = ((System.Drawing.Image)(resources.GetObject("menuOpenCmd.Image")));
+            this.menuOpenCmd.Name = "menuOpenCmd";
+            this.menuOpenCmd.Size = new System.Drawing.Size(206, 22);
+            this.menuOpenCmd.Tag = "CMD_PROMPT";
+            this.menuOpenCmd.Text = "Open Command Prompt";
+            this.menuOpenCmd.Click += new System.EventHandler(this.Menus_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -459,7 +477,7 @@
             this.tabPageNewBind.Location = new System.Drawing.Point(4, 23);
             this.tabPageNewBind.Name = "tabPageNewBind";
             this.tabPageNewBind.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNewBind.Size = new System.Drawing.Size(571, 225);
+            this.tabPageNewBind.Size = new System.Drawing.Size(571, 228);
             this.tabPageNewBind.TabIndex = 0;
             this.tabPageNewBind.Text = "New Bind";
             this.tabPageNewBind.UseVisualStyleBackColor = true;
@@ -625,7 +643,7 @@
             this.tabPageBindList.Location = new System.Drawing.Point(4, 23);
             this.tabPageBindList.Name = "tabPageBindList";
             this.tabPageBindList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBindList.Size = new System.Drawing.Size(571, 225);
+            this.tabPageBindList.Size = new System.Drawing.Size(571, 228);
             this.tabPageBindList.TabIndex = 1;
             this.tabPageBindList.Text = "Bind List";
             this.tabPageBindList.UseVisualStyleBackColor = true;
@@ -643,7 +661,7 @@
             this.listViewBind.Location = new System.Drawing.Point(3, 33);
             this.listViewBind.MultiSelect = false;
             this.listViewBind.Name = "listViewBind";
-            this.listViewBind.Size = new System.Drawing.Size(565, 189);
+            this.listViewBind.Size = new System.Drawing.Size(565, 192);
             this.listViewBind.SmallImageList = this.imageList16;
             this.listViewBind.TabIndex = 2;
             this.listViewBind.UseCompatibleStateImageBehavior = false;
@@ -759,9 +777,10 @@
             this.listBoxLog.ForeColor = System.Drawing.Color.White;
             this.listBoxLog.FormattingEnabled = true;
             this.listBoxLog.HorizontalScrollbar = true;
+            this.listBoxLog.ItemHeight = 15;
             this.listBoxLog.Location = new System.Drawing.Point(3, 64);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(562, 147);
+            this.listBoxLog.Size = new System.Drawing.Size(562, 154);
             this.listBoxLog.TabIndex = 4;
             this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
             // 
@@ -906,6 +925,8 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboxCommand;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem menuOpenCmd;
     }
 }
 

@@ -307,6 +307,15 @@ namespace Force.IPBinder {
                     _cfgs.Set<bool>("XPLook", menuXPLook.Checked);
                     Application.Restart();
                     break;
+                case "CMD_PROMPT":
+                    new Process {
+                        StartInfo ={
+                            UseShellExecute = true,
+                            FileName = "cmd",
+                            Arguments = ""
+                        }
+                    }.Start();
+                    break;
                 case "SEND":
                     if(cboxCommand.Text.Length > 0) {
                         if(!bgWorker.IsBusy) {
@@ -373,6 +382,11 @@ namespace Force.IPBinder {
                     e.Cancel = true;
                 } else {
                     //@---TODO---
+                    if(bgWorker.IsBusy) {
+                        bgWorker.CancelAsync();
+                        bgWorker.DoWork -= bgWorker_DoWork;
+                        bgWorker.RunWorkerCompleted -= bgWorker_RunWorkerCompleted;
+                    }
                 }
             }
             base.OnFormClosing(e);
@@ -530,5 +544,6 @@ namespace Force.IPBinder {
             g.DrawString(item, e.Font, lineBrush, new PointF(e.Bounds.X, e.Bounds.Y));
             e.DrawFocusRectangle();
         }
+
     }
 }
