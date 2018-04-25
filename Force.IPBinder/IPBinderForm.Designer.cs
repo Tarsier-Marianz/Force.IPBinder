@@ -87,11 +87,18 @@
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
-            this.btnSend = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cboxCommand = new System.Windows.Forms.ComboBox();
             this.listBoxLog = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSend = new Tarsier.UI.Buttons.SplitButton();
+            this.menuContextSend = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.predefinedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ipconfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ipconfigallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ipconfigreleaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ipconfigrenewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arpaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
@@ -105,6 +112,7 @@
             this.panelBindlist.SuspendLayout();
             this.tabPageCommand.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuContextSend.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripBind
@@ -729,21 +737,6 @@
             this.tabPageCommand.Text = "Commands";
             this.tabPageCommand.UseVisualStyleBackColor = true;
             // 
-            // btnSend
-            // 
-            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
-            this.btnSend.Location = new System.Drawing.Point(503, 38);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(62, 23);
-            this.btnSend.TabIndex = 7;
-            this.btnSend.Tag = "SEND";
-            this.btnSend.Text = "Send";
-            this.btnSend.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.Buttons_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -762,7 +755,7 @@
             this.cboxCommand.FormattingEnabled = true;
             this.cboxCommand.Location = new System.Drawing.Point(72, 39);
             this.cboxCommand.Name = "cboxCommand";
-            this.cboxCommand.Size = new System.Drawing.Size(428, 21);
+            this.cboxCommand.Size = new System.Drawing.Size(412, 21);
             this.cboxCommand.TabIndex = 5;
             this.cboxCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboxCommand_KeyDown);
             // 
@@ -772,6 +765,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxLog.BackColor = System.Drawing.Color.Black;
+            this.listBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBoxLog.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLog.ForeColor = System.Drawing.Color.White;
@@ -780,7 +774,7 @@
             this.listBoxLog.ItemHeight = 15;
             this.listBoxLog.Location = new System.Drawing.Point(3, 64);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(562, 154);
+            this.listBoxLog.Size = new System.Drawing.Size(562, 152);
             this.listBoxLog.TabIndex = 4;
             this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
             // 
@@ -792,6 +786,83 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(565, 30);
             this.panel1.TabIndex = 3;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.AutoSize = true;
+            this.btnSend.ContextMenuStrip = this.menuContextSend;
+            this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
+            this.btnSend.Location = new System.Drawing.Point(490, 38);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(76, 23);
+            this.btnSend.SplitMenuStrip = this.menuContextSend;
+            this.btnSend.TabIndex = 1;
+            this.btnSend.Tag = "SEND";
+            this.btnSend.Text = "Send";
+            this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // menuContextSend
+            // 
+            this.menuContextSend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.predefinedCommandsToolStripMenuItem,
+            this.ipconfigToolStripMenuItem,
+            this.ipconfigallToolStripMenuItem,
+            this.ipconfigreleaseToolStripMenuItem,
+            this.ipconfigrenewToolStripMenuItem,
+            this.arpaToolStripMenuItem});
+            this.menuContextSend.Name = "menuContextSend";
+            this.menuContextSend.Size = new System.Drawing.Size(201, 136);
+            // 
+            // predefinedCommandsToolStripMenuItem
+            // 
+            this.predefinedCommandsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.predefinedCommandsToolStripMenuItem.ForeColor = System.Drawing.Color.Gray;
+            this.predefinedCommandsToolStripMenuItem.Name = "predefinedCommandsToolStripMenuItem";
+            this.predefinedCommandsToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.predefinedCommandsToolStripMenuItem.Text = "Predefined Commands";
+            // 
+            // ipconfigToolStripMenuItem
+            // 
+            this.ipconfigToolStripMenuItem.Name = "ipconfigToolStripMenuItem";
+            this.ipconfigToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ipconfigToolStripMenuItem.Tag = "ipconfig";
+            this.ipconfigToolStripMenuItem.Text = "ipconfig";
+            this.ipconfigToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // ipconfigallToolStripMenuItem
+            // 
+            this.ipconfigallToolStripMenuItem.Name = "ipconfigallToolStripMenuItem";
+            this.ipconfigallToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ipconfigallToolStripMenuItem.Tag = "ipconfig /all";
+            this.ipconfigallToolStripMenuItem.Text = "ipconfig /all";
+            this.ipconfigallToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // ipconfigreleaseToolStripMenuItem
+            // 
+            this.ipconfigreleaseToolStripMenuItem.Name = "ipconfigreleaseToolStripMenuItem";
+            this.ipconfigreleaseToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ipconfigreleaseToolStripMenuItem.Tag = "ipconfig /release";
+            this.ipconfigreleaseToolStripMenuItem.Text = "ipconfig /release";
+            this.ipconfigreleaseToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // ipconfigrenewToolStripMenuItem
+            // 
+            this.ipconfigrenewToolStripMenuItem.Name = "ipconfigrenewToolStripMenuItem";
+            this.ipconfigrenewToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ipconfigrenewToolStripMenuItem.Tag = "ipconfig /renew";
+            this.ipconfigrenewToolStripMenuItem.Text = "ipconfig /renew";
+            this.ipconfigrenewToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
+            // 
+            // arpaToolStripMenuItem
+            // 
+            this.arpaToolStripMenuItem.Name = "arpaToolStripMenuItem";
+            this.arpaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.arpaToolStripMenuItem.Tag = "arp -a";
+            this.arpaToolStripMenuItem.Text = "arp -a";
+            this.arpaToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
             // 
             // label1
             // 
@@ -850,6 +921,7 @@
             this.tabPageCommand.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuContextSend.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -922,11 +994,18 @@
         private System.Windows.Forms.ImageList imageList16;
         private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ListBox listBoxLog;
-        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboxCommand;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuOpenCmd;
+        private Tarsier.UI.Buttons.SplitButton btnSend;
+        private System.Windows.Forms.ContextMenuStrip menuContextSend;
+        private System.Windows.Forms.ToolStripMenuItem predefinedCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ipconfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ipconfigallToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ipconfigreleaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ipconfigrenewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem arpaToolStripMenuItem;
     }
 }
 

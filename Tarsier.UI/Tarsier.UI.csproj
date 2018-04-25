@@ -72,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Icons\IconHelper.cs" />
     <Compile Include="Icons\IconListManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

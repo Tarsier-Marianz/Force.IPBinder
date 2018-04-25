@@ -13,7 +13,9 @@ using System.Text;
 using System.Windows.Forms;
 using Tarsier.Config;
 using Tarsier.Extensions;
+using Tarsier.Networks;
 using Tarsier.Security;
+using Tarsier.UI.Buttons;
 
 namespace Force.IPBinder.Forms {
     public partial class AboutForm : Form {
@@ -44,6 +46,9 @@ namespace Force.IPBinder.Forms {
             projectsAsm.Add(typeof(SQLiteHelper).Assembly);
             projectsAsm.Add(typeof(StringUtils).Assembly);
             projectsAsm.Add(typeof(SimpleEncryption).Assembly);
+            projectsAsm.Add(typeof(SplitButton).Assembly);
+            projectsAsm.Add(typeof(AdapterInfo).Assembly);
+            
             foreach(var asm in projectsAsm) {
                 var item = new ListViewItem(asm.GetName().Name);
                 item.ForeColor = Color.Gray;

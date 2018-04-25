@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using Tarsier.Extensions;
 using Tarsier.Networks;
 using Tarsier.Security;
+using Tarsier.UI.Buttons;
 using Tarsier.UI.Icons;
 
 namespace Force.IPBinder {
@@ -317,7 +318,7 @@ namespace Force.IPBinder {
                     }.Start();
                     break;
                 case "SEND":
-                    if(cboxCommand.Text.Length > 0) {
+                    if(cboxCommand.Text.Trim().Length > 0) {
                         if(!bgWorker.IsBusy) {
                             btnSend.Enabled = cboxCommand.Enabled = false;
                             bgWorker.RunWorkerAsync(new CLIParameters() {
@@ -326,37 +327,37 @@ namespace Force.IPBinder {
                                 Arguments = cboxCommand.Text.Trim()
                             });
                         }
+                    }else {
+                        AppendResult("Please enter command...");
                     }
+                    break;
+                case "ipconfig":
+                    SendPredefinedCommand(tag);
                     break;
                 case "ipconfig /all":
-                    if(!bgWorker.IsBusy) {
-                        bgWorker.RunWorkerAsync(new CLIParameters() {
-                            Filename = "CMD",
-                            Prefix = "/k ",
-                            Arguments = cboxCommand.Text.Trim()
-                        });
-                    }
+                    SendPredefinedCommand(tag);
                     break;
                 case "ipconfig /release":
-                    if(!bgWorker.IsBusy) {
-                        bgWorker.RunWorkerAsync(new CLIParameters() {
-                            Filename = "CMD",
-                            Prefix = "/k ",
-                            Arguments = cboxCommand.Text.Trim()
-                        });
-                    }
+                    SendPredefinedCommand(tag);
                     break;
                 case "ipconfig /renew":
-                    if(!bgWorker.IsBusy) {
-                        bgWorker.RunWorkerAsync(new CLIParameters() {
-                            Filename = "CMD",
-                            Prefix = "/k ",
-                            Arguments = cboxCommand.Text.Trim()
-                        });
-                    }
+                    SendPredefinedCommand(tag);
+                    break;
+                case "arp -a":
+                    SendPredefinedCommand(tag);
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void SendPredefinedCommand(string command) {
+            if(!bgWorker.IsBusy) {
+                bgWorker.RunWorkerAsync(new CLIParameters() {
+                    Filename = "CMD",
+                    Prefix = "/k ",
+                    Arguments = command
+                });
             }
         }
         private void IPBinderForm_Load(object sender, EventArgs e) {
@@ -417,6 +418,13 @@ namespace Force.IPBinder {
                     if(btn.Tag != null) {
                         Action(btn.Tag.ToString());
                     }
+                } else {
+                    SplitButton sbtn = sender as SplitButton;
+                    if(btn != null) {
+                        if(btn.Tag != null) {
+                            Action(btn.Tag.ToString());
+                        }
+                    }
                 }
             }
         }
@@ -425,7 +433,7 @@ namespace Force.IPBinder {
             btnAddForce.Enabled = (tabControlBind.SelectedIndex == 0 && cboxLocales.SelectedIndex >= 0 && cboxIPAddress.Text.Trim().Length > 0 && txtExeFile.Text.Trim().Length > 0);
             btnClear.Enabled = menuClear.Enabled = tabControlBind.SelectedIndex == 1;
             btnRemove.Enabled = menuRemove.Enabled = tabControlBind.SelectedIndex == 1 && listViewBind.SelectedItems.Count > 0;
-            btnSend.Enabled = !_isSendingCmd && cboxCommand.Text.Trim().Length > 0;
+            //btnSend.Enabled = !_isSendingCmd && cboxCommand.Text.Trim().Length > 0;
         }
 
         private void listViewBind_SelectedIndexChanged(object sender, EventArgs e) {
@@ -540,6 +548,8 @@ namespace Force.IPBinder {
             Brush lineBrush = Brushes.White;
             if(item.Contains("is not recognized")) {
                 lineBrush = new SolidBrush(Color.Red);
+            } else if(item.Contains("Please enter")) {
+                lineBrush = new SolidBrush(Color.Orange);
             }
             g.DrawString(item, e.Font, lineBrush, new PointF(e.Bounds.X, e.Bounds.Y));
             e.DrawFocusRectangle();
