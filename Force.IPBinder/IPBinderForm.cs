@@ -29,6 +29,8 @@ namespace Force.IPBinder {
         private Bindings _bindings = new Bindings(BindingFile.DatabaseFile);
         private Commands _cmds = new Commands(BindingFile.DatabaseFile);
         private NetworksAdapterInfo _networkInfo;
+        private AppVersions _appVersion;
+        private AppInfo _appInfo;
         private IconListManager _iconListManager;
         private bool _operationalStatusOnly = false;
         private bool _setPassword = false;
@@ -40,6 +42,13 @@ namespace Force.IPBinder {
         private string _selectedAutoBind = string.Empty;
         public IPBinderForm() {
             InitializeComponent();
+        }
+        private void InitializeVersion() {
+            _appInfo = new AppInfo();
+            _appVersion = new AppVersions();
+            _appVersion.WriteVersion("version.txt", _appInfo.AssemblyVersion);
+            lblVersion.Text = string.Format("v {0} (Release Build {1})", _appInfo.AssemblyFileVersion, _appInfo.AssemblyVersion);
+
         }
         private void InitializeOptions() {
             _iconListManager = new IconListManager(imageList16, IconReader.IconSize.Small);
@@ -361,6 +370,7 @@ namespace Force.IPBinder {
             }
         }
         private void IPBinderForm_Load(object sender, EventArgs e) {
+            InitializeVersion();
             InitializeOptions();
             Login();
             InitializeForceBindIPFile();

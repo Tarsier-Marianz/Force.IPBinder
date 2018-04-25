@@ -87,10 +87,6 @@
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboxCommand = new System.Windows.Forms.ComboBox();
-            this.listBoxLog = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSend = new Tarsier.UI.Buttons.SplitButton();
             this.menuContextSend = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.predefinedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,9 +95,14 @@
             this.ipconfigreleaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ipconfigrenewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arpaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboxCommand = new System.Windows.Forms.ComboBox();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
+            this.lblVersion = new System.Windows.Forms.ToolStripLabel();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
             this.statusStripBind.SuspendLayout();
@@ -111,8 +112,8 @@
             this.tabPageBindList.SuspendLayout();
             this.panelBindlist.SuspendLayout();
             this.tabPageCommand.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.menuContextSend.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripBind
@@ -326,7 +327,8 @@
             this.toolStripLabel1,
             this.btnOptions,
             this.btnHelp,
-            this.btnExit});
+            this.btnExit,
+            this.lblVersion});
             this.toolStripBind.Location = new System.Drawing.Point(0, 24);
             this.toolStripBind.Name = "toolStripBind";
             this.toolStripBind.Size = new System.Drawing.Size(579, 25);
@@ -737,56 +739,6 @@
             this.tabPageCommand.Text = "Commands";
             this.tabPageCommand.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Command:";
-            // 
-            // cboxCommand
-            // 
-            this.cboxCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboxCommand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboxCommand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cboxCommand.FormattingEnabled = true;
-            this.cboxCommand.Location = new System.Drawing.Point(72, 39);
-            this.cboxCommand.Name = "cboxCommand";
-            this.cboxCommand.Size = new System.Drawing.Size(412, 21);
-            this.cboxCommand.TabIndex = 5;
-            this.cboxCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboxCommand_KeyDown);
-            // 
-            // listBoxLog
-            // 
-            this.listBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxLog.BackColor = System.Drawing.Color.Black;
-            this.listBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBoxLog.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxLog.ForeColor = System.Drawing.Color.White;
-            this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.HorizontalScrollbar = true;
-            this.listBoxLog.ItemHeight = 15;
-            this.listBoxLog.Location = new System.Drawing.Point(3, 64);
-            this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(562, 152);
-            this.listBoxLog.TabIndex = 4;
-            this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(565, 30);
-            this.panel1.TabIndex = 3;
-            // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -864,6 +816,56 @@
             this.arpaToolStripMenuItem.Text = "arp -a";
             this.arpaToolStripMenuItem.Click += new System.EventHandler(this.Menus_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Command:";
+            // 
+            // cboxCommand
+            // 
+            this.cboxCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboxCommand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboxCommand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cboxCommand.FormattingEnabled = true;
+            this.cboxCommand.Location = new System.Drawing.Point(72, 39);
+            this.cboxCommand.Name = "cboxCommand";
+            this.cboxCommand.Size = new System.Drawing.Size(412, 21);
+            this.cboxCommand.TabIndex = 5;
+            this.cboxCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboxCommand_KeyDown);
+            // 
+            // listBoxLog
+            // 
+            this.listBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxLog.BackColor = System.Drawing.Color.Black;
+            this.listBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxLog.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxLog.ForeColor = System.Drawing.Color.White;
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.HorizontalScrollbar = true;
+            this.listBoxLog.ItemHeight = 15;
+            this.listBoxLog.Location = new System.Drawing.Point(3, 64);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(562, 152);
+            this.listBoxLog.TabIndex = 4;
+            this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(565, 30);
+            this.panel1.TabIndex = 3;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -886,6 +888,14 @@
             this.bgWorker.WorkerSupportsCancellation = true;
             this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
             this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(13, 22);
+            this.lblVersion.Text = "v";
             // 
             // IPBinderForm
             // 
@@ -919,9 +929,9 @@
             this.panelBindlist.PerformLayout();
             this.tabPageCommand.ResumeLayout(false);
             this.tabPageCommand.PerformLayout();
+            this.menuContextSend.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.menuContextSend.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1006,6 +1016,7 @@
         private System.Windows.Forms.ToolStripMenuItem ipconfigreleaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ipconfigrenewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arpaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel lblVersion;
     }
 }
 
