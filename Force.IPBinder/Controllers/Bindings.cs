@@ -60,6 +60,18 @@ namespace Force.IPBinder.Controllers {
             return sqlite.GetDataTable(defaultTable);
         }
 
+        public string GetIPAddress (string id) {
+            if(string.IsNullOrEmpty(id)) {
+                return null;
+            }
+            BindingIP bind = GetBinding(id);
+            if(bind != null) {
+                if(!string.IsNullOrEmpty(bind.IPAddress)) {
+                    return bind.IPAddress;
+                }
+            }
+            return string.Empty;
+        }
         public BindingIP GetBinding(string id) {
             if(string.IsNullOrEmpty(id)) {
                 return null;
@@ -102,6 +114,7 @@ namespace Force.IPBinder.Controllers {
             }
             return pwds;
         }
+      
         public void Add(BindingIP c) {
             Dictionary<string, object> data = new Dictionary<string, object>();
             string code = (c.Path + c.Description).RemoveNonAlphaNumeric().ToLower();
