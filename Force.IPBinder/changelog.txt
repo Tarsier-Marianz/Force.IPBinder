@@ -4,4 +4,8 @@
              ~binding will be saved to database for re-binding.
              ~capable to auto bind during window startup.
              ~can enter commands or select predefined commands.
+             ~with parameter for delayed injection based from ForceBindIP
+               parameter (-i).
              ~has password protection option.
+             ~automatic select ForceBindIP executable file with corresponding
+               architecture based from Operating System.
