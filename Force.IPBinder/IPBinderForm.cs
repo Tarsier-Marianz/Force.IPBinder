@@ -278,14 +278,16 @@ namespace Force.IPBinder {
                 case "PING_START":
                     if(lblIPAddress.Text.Trim().Length > 0) {
                         if(!bgWorker.IsBusy) {
+                            string ipToPing = lblIPAddress.Text.Trim();
                             btnPing.Image = Resources.ping_stop;
                             btnPing.Tag = "PING_STOP";
                             btnSend.Enabled = cboxCommand.Enabled = false;
                             _isPinging = true;
+                            tabControlBind.SelectedIndex = 2;
                             bgWorker.RunWorkerAsync(new CLIParameters() {
                                 Filename = "CMD",
                                 Prefix = "/c ",
-                                Arguments = string.Format("ping {0} -n 10", lblIPAddress.Text.Trim())
+                                Arguments = string.Format("ping {0} -n 10", ipToPing)
                             });
                         }
                     }
@@ -500,6 +502,7 @@ namespace Force.IPBinder {
                 btnAutoBindToggle.Image = _selectedAutoBind.Equals("Yes") ? Resources.link_delete : Resources.link_go;
                 btnAutoBindToggle.Text = _selectedAutoBind.Equals("Yes") ? "Disable auto bind during window startup" : "Set enable auto bind during window startup";
                 lblIPAddress.Text = _bindings.GetIPAddress(_selectedId);
+                btnPing.Text = "Ping selected IP Address: " + lblIPAddress.Text;
             } else {
                 ClearSelection();
             }
@@ -519,6 +522,7 @@ namespace Force.IPBinder {
            _selectedDesc =
            _selectedAutoBind = string.Empty;
             btnAutoBindToggle.Visible = false;
+            btnPing.Text = "Ping selected IP Address";
         }
 
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
@@ -571,8 +575,13 @@ namespace Force.IPBinder {
             InitializeCommands();
             btnSend.Enabled = cboxCommand.Enabled = true;
             _isSendingCmd = false;
-            _isPinging = false;
             cboxCommand.Focus();
+
+            if(_isPinging) {
+                btnPing.Image = Resources.ping_start;
+                btnPing.Tag = "PING_START";
+                _isPinging = false;
+            }
         }
 
         private void AppendResult(string message) {
