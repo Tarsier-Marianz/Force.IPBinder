@@ -35,6 +35,7 @@ namespace Force.IPBinder {
         private bool _operationalStatusOnly = false;
         private bool _setPassword = false;
         private bool _isSendingCmd = false;
+        private bool _isPinging = false;
         private string _delayInject = string.Empty;
         private string _password = string.Empty;
         private string _selectedId = string.Empty;
@@ -274,6 +275,30 @@ namespace Force.IPBinder {
                         Cursor.Current = Cursors.Default;
                     }
                     break;
+                case "PING_START":
+                    if(lblIPAddress.Text.Trim().Length > 0) {
+                        if(!bgWorker.IsBusy) {
+                            btnPing.Image = Resources.ping_stop;
+                            btnPing.Tag = "PING_STOP";
+                            btnSend.Enabled = cboxCommand.Enabled = false;
+                            _isPinging = true;
+                            bgWorker.RunWorkerAsync(new CLIParameters() {
+                                Filename = "CMD",
+                                Prefix = "/c ",
+                                Arguments = string.Format("ping {0} -t", lblIPAddress.Text.Trim())
+                            });
+                        }
+                    }
+                    break;
+                case "PING_STOP":
+                    if(bgWorker.IsBusy) {
+                        btnPing.Image = Resources.ping_start;
+                        btnPing.Tag = "PING_START";
+                        _isPinging = false;
+                        bgWorker.CancelAsync();
+                    }
+                   
+                    break;
                 case "BROWSE":
                     using(OpenFileDialog ofd = new OpenFileDialog()) {
                         ofd.Filter = "Executable files (*.exe) |*.exe|All Files (*.*)|*.*";
@@ -463,6 +488,7 @@ namespace Force.IPBinder {
             btnClear.Enabled = menuClear.Enabled = tabControlBind.SelectedIndex == 1;
             btnRemove.Enabled = menuRemove.Enabled = tabControlBind.SelectedIndex == 1 && listViewBind.SelectedItems.Count > 0;
             //btnSend.Enabled = !_isSendingCmd && cboxCommand.Text.Trim().Length > 0;
+            //btnPing.Enabled = (!_isPinging) && lblIPAddress.Text.Trim().Length > 0;
         }
 
         private void listViewBind_SelectedIndexChanged(object sender, EventArgs e) {
@@ -473,6 +499,7 @@ namespace Force.IPBinder {
                 btnAutoBindToggle.Visible = true;
                 btnAutoBindToggle.Image = _selectedAutoBind.Equals("Yes") ? Resources.link_delete : Resources.link_go;
                 btnAutoBindToggle.Text = _selectedAutoBind.Equals("Yes") ? "Disable auto bind during window startup" : "Set enable auto bind during window startup";
+                lblIPAddress.Text = _bindings.GetIPAddress(_selectedId);
             } else {
                 ClearSelection();
             }
@@ -487,6 +514,7 @@ namespace Force.IPBinder {
 
         private void ClearSelection() {
             listViewBind.SelectedItems.Clear();
+            lblIPAddress.Text = 
             _selectedId =
            _selectedDesc =
            _selectedAutoBind = string.Empty;
@@ -543,6 +571,7 @@ namespace Force.IPBinder {
             InitializeCommands();
             btnSend.Enabled = cboxCommand.Enabled = true;
             _isSendingCmd = false;
+            _isPinging = false;
             cboxCommand.Focus();
         }
 
@@ -583,6 +612,6 @@ namespace Force.IPBinder {
             g.DrawString(item, e.Font, lineBrush, new PointF(e.Bounds.X, e.Bounds.Y));
             e.DrawFocusRectangle();
         }
-
+        
     }
 }
