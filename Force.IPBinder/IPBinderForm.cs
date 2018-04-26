@@ -285,7 +285,7 @@ namespace Force.IPBinder {
                             bgWorker.RunWorkerAsync(new CLIParameters() {
                                 Filename = "CMD",
                                 Prefix = "/c ",
-                                Arguments = string.Format("ping {0} -t", lblIPAddress.Text.Trim())
+                                Arguments = string.Format("ping {0} -n 10", lblIPAddress.Text.Trim())
                             });
                         }
                     }
