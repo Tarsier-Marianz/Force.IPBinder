@@ -28,6 +28,7 @@ namespace Force.IPBinder.Forms {
             lblCopyright.Text = _info.AssemblyCopyright;
             lblDescription.Text = _info.AssemblyDescription;
             txtLicense.Text = LicenseViewer.GetContent();
+            txtChangeLog.Text = ChangedLogViewer.GetContent();
             DisplayLibraries();
 
         }
@@ -36,9 +37,11 @@ namespace Force.IPBinder.Forms {
             var asms = new List<Assembly>();
             asms.Add(typeof(JsonConvert).Assembly);
             asms.Add(typeof(SQLiteConnection).Assembly);
-
+            var item = new ListViewItem("SQLite.Interop.dll") {ForeColor = Color.DarkGreen,};
+            item.SubItems.Add("1.0.105.2");
+            LibsListView.Items.Add(item);
             foreach(var asm in asms) {
-                var item = new ListViewItem(asm.GetName().Name);
+                item = new ListViewItem(asm.GetName().Name);
                 item.ForeColor = Color.DarkGreen;
                 item.SubItems.Add(asm.GetName().Version.ToString());
                 LibsListView.Items.Add(item);
@@ -49,9 +52,9 @@ namespace Force.IPBinder.Forms {
             projectsAsm.Add(typeof(SimpleEncryption).Assembly);
             projectsAsm.Add(typeof(SplitButton).Assembly);
             projectsAsm.Add(typeof(AdapterInfo).Assembly);
-            
+
             foreach(var asm in projectsAsm) {
-                var item = new ListViewItem(asm.GetName().Name);
+                item = new ListViewItem(asm.GetName().Name);
                 item.ForeColor = Color.Gray;
                 item.SubItems.Add(asm.GetName().Version.ToString());
                 LibsListView.Items.Add(item);

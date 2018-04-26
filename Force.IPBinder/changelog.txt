@@ -1,0 +1,7 @@
+﻿version 1.0
+  2018-04-25 
+             ~bind application to specific network interface/ip address.
+             ~binding will be saved to database for re-binding.
+             ~capable to auto bind during window startup.
+             ~can enter commands or select predefined commands.
+             ~has password protection option.

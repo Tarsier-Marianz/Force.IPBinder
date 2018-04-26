@@ -20,4 +20,20 @@ namespace Force.IPBinder.Helpers {
             return content;
         }
     }
+
+    public class ChangedLogViewer {
+        private static string _changelogFile = "changelog.txt";
+
+        public static string GetContent() {
+            string _filename = Path.Combine(Application.StartupPath, _changelogFile);
+            string content = string.Empty;
+            if(File.Exists(_filename)) {
+                using(StreamReader sr = new StreamReader(_filename)) {
+                    content = sr.ReadToEnd();
+                }
+            }
+            return content;
+        }
+    }
+
 }

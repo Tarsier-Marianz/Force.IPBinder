@@ -36,6 +36,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,18 +50,19 @@
             this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tabPageChangeLog = new System.Windows.Forms.TabPage();
+            this.txtChangeLog = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPageLicense.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabPageChangeLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // AsmNameColumn
@@ -151,6 +154,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPageLicense);
+            this.tabControl1.Controls.Add(this.tabPageChangeLog);
             this.tabControl1.Location = new System.Drawing.Point(7, 99);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -187,6 +191,27 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Credits";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(105, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "ForceBindIP in command prompt";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(24, 115);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(76, 22);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "https://r1ch.net/projects/forcebindip";
             // 
             // label8
             // 
@@ -322,26 +347,28 @@
             this.label7.TabIndex = 16;
             this.label7.Text = " Solutions";
             // 
-            // label1
+            // tabPageChangeLog
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "ForceBindIP in command prompt";
+            this.tabPageChangeLog.Controls.Add(this.txtChangeLog);
+            this.tabPageChangeLog.Location = new System.Drawing.Point(4, 22);
+            this.tabPageChangeLog.Name = "tabPageChangeLog";
+            this.tabPageChangeLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageChangeLog.Size = new System.Drawing.Size(385, 143);
+            this.tabPageChangeLog.TabIndex = 3;
+            this.tabPageChangeLog.Text = "Changelog";
+            this.tabPageChangeLog.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // txtChangeLog
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(24, 115);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(76, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 20;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "https://r1ch.net/projects/forcebindip";
+            this.txtChangeLog.BackColor = System.Drawing.Color.White;
+            this.txtChangeLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChangeLog.Location = new System.Drawing.Point(3, 3);
+            this.txtChangeLog.Name = "txtChangeLog";
+            this.txtChangeLog.ReadOnly = true;
+            this.txtChangeLog.Size = new System.Drawing.Size(379, 137);
+            this.txtChangeLog.TabIndex = 1;
+            this.txtChangeLog.Text = "";
             // 
             // AboutForm
             // 
@@ -371,12 +398,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPageLicense.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tabPageChangeLog.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,5 +438,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TabPage tabPageChangeLog;
+        private System.Windows.Forms.RichTextBox txtChangeLog;
     }
 }
