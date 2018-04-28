@@ -896,17 +896,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxLog.BackColor = System.Drawing.Color.Black;
             this.listBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBoxLog.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.listBoxLog.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxLog.ForeColor = System.Drawing.Color.White;
             this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.HorizontalScrollbar = true;
             this.listBoxLog.ItemHeight = 15;
             this.listBoxLog.Location = new System.Drawing.Point(3, 64);
             this.listBoxLog.Name = "listBoxLog";
             this.listBoxLog.Size = new System.Drawing.Size(562, 152);
             this.listBoxLog.TabIndex = 4;
             this.listBoxLog.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxLog_DrawItem);
+            this.listBoxLog.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBoxLog_MeasureItem);
             // 
             // panel1
             // 

@@ -214,7 +214,7 @@ namespace Force.IPBinder {
                 btnSend.Enabled = cboxCommand.Enabled = false;
                 bgWorker.RunWorkerAsync(new CLIParameters() {
                     Filename = "CMD",
-                    Prefix = "/k",
+                    Prefix = "/C ",
                     Arguments = string.Format("\"{0}\" {1} \"{2}\"", forceBindExe, ipAddress, path),
                 });
 
@@ -286,7 +286,7 @@ namespace Force.IPBinder {
                             tabControlBind.SelectedIndex = 2;
                             bgWorker.RunWorkerAsync(new CLIParameters() {
                                 Filename = "CMD",
-                                Prefix = "/c ",
+                                Prefix = "/C ",
                                 Arguments = string.Format("ping {0} -n 10", ipToPing)
                             });
                         }
@@ -608,8 +608,8 @@ namespace Force.IPBinder {
 
         private void listBoxLog_DrawItem(object sender, DrawItemEventArgs e) {
             ListBox lb = (ListBox)sender;
-            //e.DrawBackground();
             string item = lb.Items[e.Index].ToString();
+
             Graphics g = e.Graphics;
             e.DrawBackground();
             Brush lineBrush = Brushes.White;
@@ -618,9 +618,14 @@ namespace Force.IPBinder {
             } else if(item.Contains("Please enter")) {
                 lineBrush = new SolidBrush(Color.Orange);
             }
-            g.DrawString(item, e.Font, lineBrush, new PointF(e.Bounds.X, e.Bounds.Y));
+            g.DrawString(item, e.Font, lineBrush, e.Bounds);
             e.DrawFocusRectangle();
         }
+
         
+
+        private void listBoxLog_MeasureItem(object sender, MeasureItemEventArgs e) {
+            e.ItemHeight = (int)e.Graphics.MeasureString(listBoxLog.Items[e.Index].ToString(), listBoxLog.Font, listBoxLog.Width).Height;
+        }
     }
 }

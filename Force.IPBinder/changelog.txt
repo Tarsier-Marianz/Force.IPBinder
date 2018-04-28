@@ -1,4 +1,10 @@
-﻿version 1.0
+﻿version 1.1
+  2018-04-28 
+             ~fixed: makes commands log wrap text to display all text when 
+                exceed to width because of errors in horizontal scrollbar 
+                visibility.
+
+version 1.0
   2018-04-20 
              ~bind application to specific network interface/ip address.
              ~binding will be saved to database for re-binding.
