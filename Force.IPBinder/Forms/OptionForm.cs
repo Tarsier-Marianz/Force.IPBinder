@@ -31,6 +31,13 @@ namespace Force.IPBinder.Forms {
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
             chkOperationalStatus.Checked = _cfgs.Get<bool>("OperationalStatus");
+
+            Color bc = _cfgs.Get<Color>("CommandColor");
+            btnColor.BackColor = bc;
+            btnColor.Text = bc.Name;
+            Font cf = _cfgs.Get<Font>("CommandFont");
+            btnFont.Font = cf;
+            btnFont.Text = cf.Name;
         }
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
@@ -38,6 +45,8 @@ namespace Force.IPBinder.Forms {
             _cfgs.Set<bool>("AutoSelectArchitecture", chkAutoSelecteArch.Checked);
             _cfgs.Set<bool>("ClearBindList", chkClearBindList.Checked);
             _cfgs.Set<bool>("SetPassword", chkSetPassword.Checked);
+            _cfgs.Set<Color>("CommandColor", btnColor.BackColor);
+            _cfgs.Set<Font>("CommandFont", btnFont.Font);
             Cursor.Current = Cursors.Default;
         }
 
@@ -73,6 +82,7 @@ namespace Force.IPBinder.Forms {
         private void btnFont_Click(object sender, EventArgs e) {
             try {
                 using(FontDialog fd = new FontDialog()) {
+                    fd.Font = btnFont.Font;
                     // See if OK was pressed.
                     if(fd.ShowDialog().Equals(DialogResult.OK)) {
                         // Get Font.

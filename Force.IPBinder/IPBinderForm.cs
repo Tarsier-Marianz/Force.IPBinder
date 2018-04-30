@@ -32,6 +32,8 @@ namespace Force.IPBinder {
         private AppVersions _appVersion;
         private AppInfo _appInfo;
         private IconListManager _iconListManager;
+        private Color _cmdColor = Color.White;
+        private Font _cmdFont =  new Font("Courier New", 8.25F, FontStyle.Regular);
         private bool _operationalStatusOnly = false;
         private bool _setPassword = false;
         private bool _isSendingCmd = false;
@@ -61,6 +63,16 @@ namespace Force.IPBinder {
             menuStatusbar.Checked = _cfgs.Get<bool>("Statusbar");
             listViewBind.GridLines = menuGridlines.Checked = _cfgs.Get<bool>("Gridlines");
 
+            Color cmdcolor = _cfgs.Get<Color>("CommandColor");
+            if(cmdcolor != null) {
+                _cmdColor = cmdcolor;
+            }
+           Font cmdFont = _cfgs.Get<Font>("CommandFont");
+            if(cmdFont != null) {
+                _cmdFont = cmdFont;
+            }
+         
+            listBoxLog.Font = _cmdFont;
             menuXPLook.Checked = _cfgs.Get<bool>("XPLook");
             if(menuXPLook.Checked) {
                 menuStripBind.RenderMode = ToolStripRenderMode.System;
@@ -612,7 +624,7 @@ namespace Force.IPBinder {
 
             Graphics g = e.Graphics;
             e.DrawBackground();
-            Brush lineBrush = Brushes.White;
+            Brush lineBrush = new SolidBrush(_cmdColor);
             if(item.Contains("is not recognized")) {
                 lineBrush = new SolidBrush(Color.Red);
             } else if(item.Contains("Please enter")) {
