@@ -35,21 +35,21 @@
             this.chkOperationalStatus = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPageAppearance = new System.Windows.Forms.TabPage();
             this.chkAutoSelecteArch = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnColor = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnFont = new System.Windows.Forms.Button();
+            this.tabPageAppearance = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnFont = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnColor = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDownPingCount = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).BeginInit();
             this.SuspendLayout();
             // 
             // chkClearBindList
@@ -178,24 +178,6 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPageAppearance
-            // 
-            this.tabPageAppearance.Controls.Add(this.label9);
-            this.tabPageAppearance.Controls.Add(this.btnFont);
-            this.tabPageAppearance.Controls.Add(this.label8);
-            this.tabPageAppearance.Controls.Add(this.btnColor);
-            this.tabPageAppearance.Controls.Add(this.label7);
-            this.tabPageAppearance.Controls.Add(this.label6);
-            this.tabPageAppearance.Controls.Add(this.numericUpDown1);
-            this.tabPageAppearance.Controls.Add(this.label5);
-            this.tabPageAppearance.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAppearance.Name = "tabPageAppearance";
-            this.tabPageAppearance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAppearance.Size = new System.Drawing.Size(357, 249);
-            this.tabPageAppearance.TabIndex = 1;
-            this.tabPageAppearance.Text = "Miscellaneous";
-            this.tabPageAppearance.UseVisualStyleBackColor = true;
-            // 
             // chkAutoSelecteArch
             // 
             this.chkAutoSelecteArch.ForeColor = System.Drawing.Color.Green;
@@ -216,68 +198,33 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Automatically select ForceBindIP depending on Operating System architecture";
             // 
-            // label5
+            // tabPageAppearance
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Ping Count:";
+            this.tabPageAppearance.Controls.Add(this.label9);
+            this.tabPageAppearance.Controls.Add(this.btnFont);
+            this.tabPageAppearance.Controls.Add(this.label8);
+            this.tabPageAppearance.Controls.Add(this.btnColor);
+            this.tabPageAppearance.Controls.Add(this.label7);
+            this.tabPageAppearance.Controls.Add(this.label6);
+            this.tabPageAppearance.Controls.Add(this.numericUpDownPingCount);
+            this.tabPageAppearance.Controls.Add(this.label5);
+            this.tabPageAppearance.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAppearance.Name = "tabPageAppearance";
+            this.tabPageAppearance.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAppearance.Size = new System.Drawing.Size(357, 249);
+            this.tabPageAppearance.TabIndex = 1;
+            this.tabPageAppearance.Text = "Miscellaneous";
+            this.tabPageAppearance.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // label9
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(87, 16);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(96, 21);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // label6
-            // 
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(84, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(256, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Number of response when IP Address being ping.";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 104);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Color:";
-            // 
-            // btnColor
-            // 
-            this.btnColor.Location = new System.Drawing.Point(133, 99);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(195, 23);
-            this.btnColor.TabIndex = 17;
-            this.btnColor.Text = "White";
-            this.btnColor.UseVisualStyleBackColor = true;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 132);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Font:";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 81);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Command Line";
             // 
             // btnFont
             // 
@@ -289,15 +236,68 @@
             this.btnFont.UseVisualStyleBackColor = true;
             this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
             // 
-            // label9
+            // label8
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 81);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Command Line";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 132);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Font:";
+            // 
+            // btnColor
+            // 
+            this.btnColor.Location = new System.Drawing.Point(133, 99);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(195, 23);
+            this.btnColor.TabIndex = 17;
+            this.btnColor.Text = "White";
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Color:";
+            // 
+            // label6
+            // 
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(84, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(256, 31);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Number of response when IP Address being ping.\r\nValue should be 4 up to 100.";
+            // 
+            // numericUpDownPingCount
+            // 
+            this.numericUpDownPingCount.Location = new System.Drawing.Point(87, 16);
+            this.numericUpDownPingCount.Minimum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDownPingCount.Name = "numericUpDownPingCount";
+            this.numericUpDownPingCount.Size = new System.Drawing.Size(96, 21);
+            this.numericUpDownPingCount.TabIndex = 1;
+            this.numericUpDownPingCount.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Ping Count:";
             // 
             // OptionForm
             // 
@@ -320,7 +320,7 @@
             this.tabPage1.PerformLayout();
             this.tabPageAppearance.ResumeLayout(false);
             this.tabPageAppearance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,7 +341,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageAppearance;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownPingCount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnColor;

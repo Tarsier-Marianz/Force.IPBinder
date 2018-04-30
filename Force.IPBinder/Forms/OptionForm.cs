@@ -27,6 +27,10 @@ namespace Force.IPBinder.Forms {
                 }
                 linkChange.Visible = (!string.IsNullOrEmpty(_password));
             }
+            int pingCount = _cfgs.Get<int>("PingCount");
+            if(pingCount > 0) {
+                numericUpDownPingCount.Value = pingCount;
+            }
             chkAutoSelecteArch.Checked = _cfgs.Get<bool>("AutoSelectArchitecture");
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
@@ -41,6 +45,7 @@ namespace Force.IPBinder.Forms {
         }
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
+            _cfgs.Set<int>("PingCount", (int)numericUpDownPingCount.Value);
             _cfgs.Set<bool>("OperationalStatus", chkOperationalStatus.Checked);
             _cfgs.Set<bool>("AutoSelectArchitecture", chkAutoSelecteArch.Checked);
             _cfgs.Set<bool>("ClearBindList", chkClearBindList.Checked);
