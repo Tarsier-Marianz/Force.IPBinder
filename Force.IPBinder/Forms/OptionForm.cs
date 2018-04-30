@@ -1,6 +1,7 @@
 ﻿using Force.IPBinder.Constants;
 using Force.IPBinder.Controllers;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Tarsier.Security;
 
@@ -26,7 +27,7 @@ namespace Force.IPBinder.Forms {
                 }
                 linkChange.Visible = (!string.IsNullOrEmpty(_password));
             }
-            chkEncryptContent.Checked = _cfgs.Get<bool>("Encrypt");
+            chkAutoSelecteArch.Checked = _cfgs.Get<bool>("AutoSelectArchitecture");
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
             chkOperationalStatus.Checked = _cfgs.Get<bool>("OperationalStatus");
@@ -34,7 +35,7 @@ namespace Force.IPBinder.Forms {
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
             _cfgs.Set<bool>("OperationalStatus", chkOperationalStatus.Checked);
-            _cfgs.Set<bool>("Encrypt", chkEncryptContent.Checked);
+            _cfgs.Set<bool>("AutoSelectArchitecture", chkAutoSelecteArch.Checked);
             _cfgs.Set<bool>("ClearBindList", chkClearBindList.Checked);
             _cfgs.Set<bool>("SetPassword", chkSetPassword.Checked);
             Cursor.Current = Cursors.Default;
@@ -65,6 +66,30 @@ namespace Force.IPBinder.Forms {
                     Cursor.Current = Cursors.Default;
                 } else {
                     chkSetPassword.Checked = false;
+                }
+            }
+        }
+
+        private void btnFont_Click(object sender, EventArgs e) {
+            try {
+                using(FontDialog fd = new FontDialog()) {
+                    // See if OK was pressed.
+                    if(fd.ShowDialog().Equals(DialogResult.OK)) {
+                        // Get Font.
+                        Font font = fd.Font;
+                        // Set TextBox properties.
+                        this.btnFont.Text = font.Name;
+                        this.btnFont.Font = font;
+                    }
+                }
+            } catch { }
+        }
+
+        private void btnColor_Click(object sender, EventArgs e) {
+            using(ColorDialog cd = new ColorDialog()) {
+                if(cd.ShowDialog().Equals(DialogResult.OK)) {
+                    btnColor.BackColor = cd.Color;
+                    btnColor.Text = cd.Color.Name;
                 }
             }
         }
