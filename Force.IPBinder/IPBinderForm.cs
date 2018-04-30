@@ -33,8 +33,9 @@ namespace Force.IPBinder {
         private AppInfo _appInfo;
         private IconListManager _iconListManager;
         private Color _cmdColor = Color.White;
-        private Font _cmdFont =  new Font("Courier New", 8.25F, FontStyle.Regular);
+        private Font _cmdFont = new Font("Courier New", 8.25F, FontStyle.Regular);
         private bool _operationalStatusOnly = false;
+        private bool _autoSelectArchi = false;
         private bool _setPassword = false;
         private bool _isSendingCmd = false;
         private bool _isPinging = false;
@@ -43,6 +44,8 @@ namespace Force.IPBinder {
         private string _selectedId = string.Empty;
         private string _selectedDesc = string.Empty;
         private string _selectedAutoBind = string.Empty;
+        private string _forceBindIP_ExeFile = string.Empty;
+        private int _pingCount = 4;
         public IPBinderForm() {
             InitializeComponent();
         }
@@ -57,21 +60,26 @@ namespace Force.IPBinder {
             _iconListManager = new IconListManager(imageList16, IconReader.IconSize.Small);
 
             _cfgs = new Configs(BindingFile.DatabaseFile);
+            _autoSelectArchi = _cfgs.Get<bool>("AutoSelectArchitecture");
             _setPassword = _cfgs.Get<bool>("SetPassword");
             _operationalStatusOnly = _cfgs.Get<bool>("OperationalStatus");
             menuToolbar.Checked = _cfgs.Get<bool>("Toolbar");
             menuStatusbar.Checked = _cfgs.Get<bool>("Statusbar");
             listViewBind.GridLines = menuGridlines.Checked = _cfgs.Get<bool>("Gridlines");
 
+            int pingCount = _cfgs.Get<int>("PingCount");
+            if(pingCount >= 4 && pingCount <= 100) {
+                _pingCount = pingCount;
+            }
             Color cmdcolor = _cfgs.Get<Color>("CommandColor");
             if(cmdcolor != null) {
                 _cmdColor = cmdcolor;
             }
-           Font cmdFont = _cfgs.Get<Font>("CommandFont");
+            Font cmdFont = _cfgs.Get<Font>("CommandFont");
             if(cmdFont != null) {
                 _cmdFont = cmdFont;
             }
-         
+
             listBoxLog.Font = _cmdFont;
             menuXPLook.Checked = _cfgs.Get<bool>("XPLook");
             if(menuXPLook.Checked) {
@@ -115,8 +123,15 @@ namespace Force.IPBinder {
             //cboxCommand.DataSource = _cmds.GetAutoCompleteSource();
         }
         private void InitializeForceBindIPFile() {
-            string ForceBindIPx86 = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP64.exe");
-            if(File.Exists(ForceBindIPx86)) {
+            _forceBindIP_ExeFile = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP.exe");
+            if(_autoSelectArchi) {
+                lblForceBindIPFile.Text = "ForceBindIP:";
+                if(Environment.Is64BitOperatingSystem) {
+                    _forceBindIP_ExeFile = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP64.exe");
+                    lblForceBindIPFile.Text = "ForceBindIP64:";
+                }
+            }
+            if(File.Exists(_forceBindIP_ExeFile)) {
                 lblForceBindFind.Text = "Found";
                 lblForceBindFind.ForeColor = Color.Green;
             } else {
@@ -221,13 +236,12 @@ namespace Force.IPBinder {
         private void AddBind(string description, string ipAddress, string path, bool autoBind, bool delay) {
             Cursor.Current = Cursors.WaitCursor;
 
-            string forceBindExe = Path.Combine(Application.StartupPath, "ForceBindIP", "ForceBindIP64.exe");
             if(!bgWorker.IsBusy) {
                 btnSend.Enabled = cboxCommand.Enabled = false;
                 bgWorker.RunWorkerAsync(new CLIParameters() {
                     Filename = "CMD",
                     Prefix = "/C ",
-                    Arguments = string.Format("\"{0}\" {1} \"{2}\"", forceBindExe, ipAddress, path),
+                    Arguments = string.Format("\"{0}\" {1} \"{2}\"", _forceBindIP_ExeFile, ipAddress, path),
                 });
 
                 _bindings.Add(new Models.BindingIP() {
@@ -277,6 +291,11 @@ namespace Force.IPBinder {
                         Cursor.Current = Cursors.Default;
                     }
                     break;
+                case "CLEAR_CMDS":
+                    listBoxLog.Items.Clear();
+                    StartCommandPrompt();
+
+                    break;
                 case "AUTO_BIND":
                     if(listViewBind.SelectedItems.Count > 0 && !string.IsNullOrEmpty(_selectedAutoBind)) {
                         Cursor.Current = Cursors.WaitCursor;
@@ -299,7 +318,7 @@ namespace Force.IPBinder {
                             bgWorker.RunWorkerAsync(new CLIParameters() {
                                 Filename = "CMD",
                                 Prefix = "/C ",
-                                Arguments = string.Format("ping {0} -n 10", ipToPing)
+                                Arguments = string.Format("ping {0} -n {1}", ipToPing, _pingCount)
                             });
                         }
                     }
@@ -311,7 +330,7 @@ namespace Force.IPBinder {
                         _isPinging = false;
                         bgWorker.CancelAsync();
                     }
-                   
+
                     break;
                 case "BROWSE":
                     using(OpenFileDialog ofd = new OpenFileDialog()) {
@@ -325,6 +344,7 @@ namespace Force.IPBinder {
                     using(OptionForm opt = new OptionForm()) {
                         opt.ShowDialog().Equals(DialogResult.OK);
                         InitializeOptions();
+                        InitializeForceBindIPFile();
                     }
                     break;
                 case "HELP":
@@ -375,7 +395,7 @@ namespace Force.IPBinder {
                                 Arguments = cboxCommand.Text.Trim()
                             });
                         }
-                    }else {
+                    } else {
                         AppendResult("Please enter command...");
                     }
                     break;
@@ -406,15 +426,15 @@ namespace Force.IPBinder {
                         if(File.Exists(installer)) {
                             Process.Start(installer);
                         }
-                    }catch(Win32Exception ex) {
+                    } catch(Win32Exception ex) {
                         MessageBox.Show(ex.Message, "ForceBindIP Installation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                   
+
                     break;
                 default:
                     break;
 
-                    
+
             }
         }
 
@@ -435,14 +455,7 @@ namespace Force.IPBinder {
             InitializeNetLocale();
             InitializeBindings();
             InitializeCommands();
-            if(!bgWorker.IsBusy) {
-                btnSend.Enabled = cboxCommand.Enabled = false;
-                bgWorker.RunWorkerAsync(new CLIParameters() {
-                    Filename = "CMD",
-                    Prefix= "/c",
-                    Arguments = string.Empty
-                });
-            }
+            StartCommandPrompt();
         }
         protected override void OnFormClosing(FormClosingEventArgs e) {
             if(e.CloseReason.Equals(CloseReason.UserClosing)) {
@@ -501,6 +514,7 @@ namespace Force.IPBinder {
             btnAddForce.Enabled = (tabControlBind.SelectedIndex == 0 && cboxLocales.SelectedIndex >= 0 && cboxIPAddress.Text.Trim().Length > 0 && txtExeFile.Text.Trim().Length > 0);
             btnClear.Enabled = menuClear.Enabled = tabControlBind.SelectedIndex == 1;
             btnRemove.Enabled = menuRemove.Enabled = tabControlBind.SelectedIndex == 1 && listViewBind.SelectedItems.Count > 0;
+            btnClearCmds.Enabled = (tabControlBind.SelectedIndex == 2 && listBoxLog.Items.Count > 0);
             //btnSend.Enabled = !_isSendingCmd && cboxCommand.Text.Trim().Length > 0;
             //btnPing.Enabled = (!_isPinging) && lblIPAddress.Text.Trim().Length > 0;
         }
@@ -529,7 +543,7 @@ namespace Force.IPBinder {
 
         private void ClearSelection() {
             listViewBind.SelectedItems.Clear();
-            lblIPAddress.Text = 
+            lblIPAddress.Text =
             _selectedId =
            _selectedDesc =
            _selectedAutoBind = string.Empty;
@@ -634,10 +648,21 @@ namespace Force.IPBinder {
             e.DrawFocusRectangle();
         }
 
-        
+
 
         private void listBoxLog_MeasureItem(object sender, MeasureItemEventArgs e) {
             e.ItemHeight = (int)e.Graphics.MeasureString(listBoxLog.Items[e.Index].ToString(), listBoxLog.Font, listBoxLog.Width).Height;
+        }
+
+        private void StartCommandPrompt() {
+            if(!bgWorker.IsBusy) {
+                btnSend.Enabled = cboxCommand.Enabled = false;
+                bgWorker.RunWorkerAsync(new CLIParameters() {
+                    Filename = "CMD",
+                    Prefix = "/c",
+                    Arguments = string.Empty
+                });
+            }
         }
     }
 }

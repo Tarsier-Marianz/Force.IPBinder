@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IPBinderForm));
             this.menuStripBind = new System.Windows.Forms.MenuStrip();
             this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,7 @@
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnRemove = new System.Windows.Forms.ToolStripButton();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
+            this.btnClearCmds = new System.Windows.Forms.ToolStripButton();
             this.btnAutoBindToggle = new System.Windows.Forms.ToolStripButton();
             this.btnPing = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -65,7 +65,7 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblIPAddress = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblForceBindIPFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblForceBindFind = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControlBind = new System.Windows.Forms.TabControl();
             this.tabPageNewBind = new System.Windows.Forms.TabPage();
@@ -79,7 +79,7 @@
             this.txtExeFile = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblIPAdd = new System.Windows.Forms.Label();
-            this.imgListBind = new System.Windows.Forms.ImageList(this.components);
+            this.imgListBind = new System.Windows.Forms.ImageList();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageBindList = new System.Windows.Forms.TabPage();
@@ -88,12 +88,12 @@
             this.columnHeaderDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAutoBind = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList16 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList16 = new System.Windows.Forms.ImageList();
             this.panelBindlist = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageCommand = new System.Windows.Forms.TabPage();
             this.btnSend = new Tarsier.UI.Buttons.SplitButton();
-            this.menuContextSend = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuContextSend = new System.Windows.Forms.ContextMenuStrip();
             this.predefinedCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ipconfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ipconfigallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +105,7 @@
             this.listBoxLog = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.timerCheck = new System.Windows.Forms.Timer(this.components);
+            this.timerCheck = new System.Windows.Forms.Timer();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStripBind.SuspendLayout();
             this.toolStripBind.SuspendLayout();
@@ -347,6 +347,7 @@
             this.btnAdd,
             this.btnRemove,
             this.btnClear,
+            this.btnClearCmds,
             this.btnAutoBindToggle,
             this.btnPing,
             this.toolStripLabel1,
@@ -392,6 +393,18 @@
             this.btnClear.Tag = "CLEAR";
             this.btnClear.Text = "Clear all binded application in list";
             this.btnClear.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // btnClearCmds
+            // 
+            this.btnClearCmds.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnClearCmds.Enabled = false;
+            this.btnClearCmds.Image = ((System.Drawing.Image)(resources.GetObject("btnClearCmds.Image")));
+            this.btnClearCmds.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearCmds.Name = "btnClearCmds";
+            this.btnClearCmds.Size = new System.Drawing.Size(23, 22);
+            this.btnClearCmds.Tag = "CLEAR_CMDS";
+            this.btnClearCmds.Text = "Clear command line contents";
+            this.btnClearCmds.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // btnAutoBindToggle
             // 
@@ -468,7 +481,7 @@
             this.lblStatus,
             this.lblIPAddress,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel1,
+            this.lblForceBindIPFile,
             this.lblForceBindFind});
             this.statusStripBind.Location = new System.Drawing.Point(0, 304);
             this.statusStripBind.Name = "statusStripBind";
@@ -494,11 +507,11 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(31, 17);
             this.toolStripStatusLabel2.Text = "        ";
             // 
-            // toolStripStatusLabel1
+            // lblForceBindIPFile
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(73, 17);
-            this.toolStripStatusLabel1.Text = "ForceBindIP:";
+            this.lblForceBindIPFile.Name = "lblForceBindIPFile";
+            this.lblForceBindIPFile.Size = new System.Drawing.Size(73, 17);
+            this.lblForceBindIPFile.Text = "ForceBindIP:";
             // 
             // lblForceBindFind
             // 
@@ -1040,7 +1053,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuGridlines;
         private System.Windows.Forms.ToolStripMenuItem menuXPLook;
         private System.Windows.Forms.Timer timerCheck;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblForceBindIPFile;
         private System.Windows.Forms.ToolStripStatusLabel lblForceBindFind;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripButton btnAutoBindToggle;
@@ -1064,6 +1077,7 @@
         private System.Windows.Forms.ToolStripMenuItem installForceBindIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lblIPAddress;
         private System.Windows.Forms.ToolStripButton btnPing;
+        private System.Windows.Forms.ToolStripButton btnClearCmds;
     }
 }
 
