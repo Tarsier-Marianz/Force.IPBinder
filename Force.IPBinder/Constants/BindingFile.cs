@@ -6,6 +6,7 @@ using System.Text;
 namespace Force.IPBinder.Constants {
     public class BindingFile {
         public const string DatabaseFile = "Tarsier.Bindings.dll";
+        public const string RegStartupKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
     }
 
     public class Messages {
