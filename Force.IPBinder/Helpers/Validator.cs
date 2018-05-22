@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Tarsier.Extensions;
@@ -18,6 +19,17 @@ namespace Force.IPBinder.Helpers {
                     return false;
             }
             return true;
+        }
+
+        public static bool IsValidPath(string path) {
+            try {
+                //string fullPath = Path.GetFullPath(path.Replace(">", string.Empty));
+                string fullPath = path.Replace(">", string.Empty);
+                if(Directory.Exists(fullPath)) {
+                    return true;
+                }
+            } catch { }
+            return false;
         }
     }
 }

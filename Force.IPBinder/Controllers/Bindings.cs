@@ -59,6 +59,13 @@ namespace Force.IPBinder.Controllers {
             }
             return sqlite.GetDataTable(defaultTable);
         }
+        public DataTable GetDataTableAutoBind() {
+            if(string.IsNullOrEmpty(defaultTable)) {
+                return null;
+            }
+                return sqlite.Select(string.Format(Queries.SELECT_TABLE_WHERE, defaultTable, "AutoBind ='1'"));
+          
+        }
 
         public string GetIPAddress (string id) {
             if(string.IsNullOrEmpty(id)) {
@@ -95,9 +102,11 @@ namespace Force.IPBinder.Controllers {
             return b;
         }
 
-        public List<BindingIP> GetBindings() {
+        public List<BindingIP> GetBindings(bool autoBinded= false) {
             DataTable dt = sqlite.Select(string.Format(Queries.SELECT_TABLE_DESC, defaultTable, "ID"));
-
+            if(autoBinded) {
+                dt = sqlite.Select(string.Format(Queries.SELECT_TABLE_WHERE, defaultTable, "AutoBind = 1"));
+            }
             List<BindingIP> pwds = new List<BindingIP>();
             if(dt.Rows.Count > 0) {
                 foreach(DataRow dr in dt.Rows) {

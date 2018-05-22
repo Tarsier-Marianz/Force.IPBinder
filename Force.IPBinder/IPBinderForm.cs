@@ -3,6 +3,7 @@ using Force.IPBinder.Controllers;
 using Force.IPBinder.Enums;
 using Force.IPBinder.Forms;
 using Force.IPBinder.Helpers;
+using Force.IPBinder.Models;
 using Force.IPBinder.Properties;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace Force.IPBinder {
         private bool _setPassword = false;
         private bool _isSendingCmd = false;
         private bool _isPinging = false;
+        private bool _isShowEnterCmd = false;
         private string _delayInject = string.Empty;
         private string _password = string.Empty;
         private string _selectedId = string.Empty;
@@ -62,6 +64,7 @@ namespace Force.IPBinder {
             _cfgs = new Configs(BindingFile.DatabaseFile);
             _autoSelectArchi = _cfgs.Get<bool>("AutoSelectArchitecture");
             _setPassword = _cfgs.Get<bool>("SetPassword");
+            _isShowEnterCmd = _cfgs.Get<bool>("ShowEnterCmd");
             _operationalStatusOnly = _cfgs.Get<bool>("OperationalStatus");
             menuToolbar.Checked = _cfgs.Get<bool>("Toolbar");
             menuStatusbar.Checked = _cfgs.Get<bool>("Statusbar");
@@ -108,7 +111,11 @@ namespace Force.IPBinder {
                 }
             }
         }
-
+        private void CheckAutoBind() {
+            List<BindingIP> bindingIps = _bindings.GetBindings(true);
+            AppStartup.RegisterInStartup(bindingIps.Count > 0);
+            //AppStartup.RegisterInStartup(false);
+        }
         private void InitializeBindings() {
             _iconListManager.ClearLists(); // to refresh Icon from .exe
             listViewBind.Items.Clear();
@@ -134,6 +141,7 @@ namespace Force.IPBinder {
             if(File.Exists(_forceBindIP_ExeFile)) {
                 lblForceBindFind.Text = "Found";
                 lblForceBindFind.ForeColor = Color.Green;
+                _cfgs.Set<string>("ForceBindIPExe", _forceBindIP_ExeFile);
             } else {
                 lblForceBindFind.Text = "Not Found";
                 lblForceBindFind.ForeColor = Color.Red;
@@ -458,6 +466,7 @@ namespace Force.IPBinder {
             StartCommandPrompt();
         }
         protected override void OnFormClosing(FormClosingEventArgs e) {
+            CheckAutoBind();
             if(e.CloseReason.Equals(CloseReason.UserClosing)) {
                 if(MessageBox.Show(Messages.EXIT, "Confirm",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.No)) {
@@ -572,6 +581,10 @@ namespace Force.IPBinder {
             process.OutputDataReceived += Process_OutputDataReceived;
             string stdError = null;
 
+            if(_isShowEnterCmd) {
+                AppendResult("Args: " + cli.Arguments);
+            }
+
             process.Start();
             process.BeginOutputReadLine();
             stdError = process.StandardError.ReadToEnd();
@@ -633,6 +646,8 @@ namespace Force.IPBinder {
         }
 
         private void listBoxLog_DrawItem(object sender, DrawItemEventArgs e) {
+            if(e.Index < 0) return;
+
             ListBox lb = (ListBox)sender;
             string item = lb.Items[e.Index].ToString();
 
@@ -643,12 +658,23 @@ namespace Force.IPBinder {
                 lineBrush = new SolidBrush(Color.Red);
             } else if(item.Contains("Please enter")) {
                 lineBrush = new SolidBrush(Color.Orange);
+            } else if(item.Contains("****************")) {
+                lineBrush = new SolidBrush(Color.Yellow);
+            } else if(item.Contains("Args:")) {
+                item = item.Replace("Args:", string.Empty).Trim();
+                if(!string.IsNullOrEmpty(item)) {
+                    item = "#" + item;
+                }
+                lineBrush = new SolidBrush(Color.SkyBlue);
+            } else {
+                // if(Validator.IsValidPath(item)) {
+                //     lineBrush = new SolidBrush(Color.Yellow);
+                // }
             }
+
             g.DrawString(item, e.Font, lineBrush, e.Bounds);
             e.DrawFocusRectangle();
         }
-
-
 
         private void listBoxLog_MeasureItem(object sender, MeasureItemEventArgs e) {
             e.ItemHeight = (int)e.Graphics.MeasureString(listBoxLog.Items[e.Index].ToString(), listBoxLog.Font, listBoxLog.Width).Height;

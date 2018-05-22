@@ -122,6 +122,7 @@
     <Compile Include="Forms\PasswordForm.Designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppStartup.cs" />
     <Compile Include="Helpers\AppVersions.cs" />
     <Compile Include="Models\CLIParameters.cs" />
     <Compile Include="Helpers\ForceBind.cs" />
