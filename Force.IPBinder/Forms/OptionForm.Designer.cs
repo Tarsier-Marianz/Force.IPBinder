@@ -38,6 +38,7 @@
             this.chkAutoSelecteArch = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
+            this.chkEnterCmd = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnFont = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@
             // chkClearBindList
             // 
             this.chkClearBindList.ForeColor = System.Drawing.Color.Green;
-            this.chkClearBindList.Location = new System.Drawing.Point(17, 65);
+            this.chkClearBindList.Location = new System.Drawing.Point(17, 72);
             this.chkClearBindList.Name = "chkClearBindList";
             this.chkClearBindList.Size = new System.Drawing.Size(292, 17);
             this.chkClearBindList.TabIndex = 2;
@@ -66,7 +67,7 @@
             // label2
             // 
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(35, 85);
+            this.label2.Location = new System.Drawing.Point(35, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(274, 20);
             this.label2.TabIndex = 3;
@@ -75,7 +76,7 @@
             // label3
             // 
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(35, 197);
+            this.label3.Location = new System.Drawing.Point(35, 204);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(274, 30);
             this.label3.TabIndex = 5;
@@ -84,7 +85,7 @@
             // chkSetPassword
             // 
             this.chkSetPassword.ForeColor = System.Drawing.Color.Green;
-            this.chkSetPassword.Location = new System.Drawing.Point(17, 177);
+            this.chkSetPassword.Location = new System.Drawing.Point(17, 184);
             this.chkSetPassword.Name = "chkSetPassword";
             this.chkSetPassword.Size = new System.Drawing.Size(277, 17);
             this.chkSetPassword.TabIndex = 4;
@@ -120,7 +121,7 @@
             // linkChange
             // 
             this.linkChange.AutoSize = true;
-            this.linkChange.Location = new System.Drawing.Point(300, 181);
+            this.linkChange.Location = new System.Drawing.Point(300, 188);
             this.linkChange.Name = "linkChange";
             this.linkChange.Size = new System.Drawing.Size(44, 13);
             this.linkChange.TabIndex = 8;
@@ -132,7 +133,7 @@
             // label4
             // 
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(35, 136);
+            this.label4.Location = new System.Drawing.Point(35, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(274, 27);
             this.label4.TabIndex = 10;
@@ -141,7 +142,7 @@
             // chkOperationalStatus
             // 
             this.chkOperationalStatus.ForeColor = System.Drawing.Color.Green;
-            this.chkOperationalStatus.Location = new System.Drawing.Point(17, 116);
+            this.chkOperationalStatus.Location = new System.Drawing.Point(17, 123);
             this.chkOperationalStatus.Name = "chkOperationalStatus";
             this.chkOperationalStatus.Size = new System.Drawing.Size(292, 17);
             this.chkOperationalStatus.TabIndex = 9;
@@ -181,7 +182,7 @@
             // chkAutoSelecteArch
             // 
             this.chkAutoSelecteArch.ForeColor = System.Drawing.Color.Green;
-            this.chkAutoSelecteArch.Location = new System.Drawing.Point(17, 6);
+            this.chkAutoSelecteArch.Location = new System.Drawing.Point(17, 13);
             this.chkAutoSelecteArch.Name = "chkAutoSelecteArch";
             this.chkAutoSelecteArch.Size = new System.Drawing.Size(292, 17);
             this.chkAutoSelecteArch.TabIndex = 12;
@@ -192,7 +193,7 @@
             // label1
             // 
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(35, 26);
+            this.label1.Location = new System.Drawing.Point(35, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(274, 36);
             this.label1.TabIndex = 13;
@@ -200,6 +201,7 @@
             // 
             // tabPageAppearance
             // 
+            this.tabPageAppearance.Controls.Add(this.chkEnterCmd);
             this.tabPageAppearance.Controls.Add(this.label9);
             this.tabPageAppearance.Controls.Add(this.btnFont);
             this.tabPageAppearance.Controls.Add(this.label8);
@@ -215,6 +217,17 @@
             this.tabPageAppearance.TabIndex = 1;
             this.tabPageAppearance.Text = "Miscellaneous";
             this.tabPageAppearance.UseVisualStyleBackColor = true;
+            // 
+            // chkEnterCmd
+            // 
+            this.chkEnterCmd.AutoSize = true;
+            this.chkEnterCmd.Location = new System.Drawing.Point(133, 167);
+            this.chkEnterCmd.Name = "chkEnterCmd";
+            this.chkEnterCmd.Size = new System.Drawing.Size(145, 17);
+            this.chkEnterCmd.TabIndex = 21;
+            this.chkEnterCmd.Tag = "ShowEnterCmd";
+            this.chkEnterCmd.Text = "Show entered command.";
+            this.chkEnterCmd.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -303,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 340);
+            this.ClientSize = new System.Drawing.Size(388, 340);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -348,5 +361,6 @@
         private System.Windows.Forms.Button btnFont;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkEnterCmd;
     }
 }

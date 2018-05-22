@@ -35,6 +35,7 @@ namespace Force.IPBinder.Forms {
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
             chkOperationalStatus.Checked = _cfgs.Get<bool>("OperationalStatus");
+            chkEnterCmd.Checked = _cfgs.Get<bool>("ShowEnterCmd");
 
             Color bc = _cfgs.Get<Color>("CommandColor");
             btnColor.BackColor = bc;
@@ -52,6 +53,7 @@ namespace Force.IPBinder.Forms {
             _cfgs.Set<bool>("SetPassword", chkSetPassword.Checked);
             _cfgs.Set<Color>("CommandColor", btnColor.BackColor);
             _cfgs.Set<Font>("CommandFont", btnFont.Font);
+            _cfgs.Set<bool>("ShowEnterCmd", chkEnterCmd.Checked);
             Cursor.Current = Cursors.Default;
         }
 
@@ -102,6 +104,7 @@ namespace Force.IPBinder.Forms {
 
         private void btnColor_Click(object sender, EventArgs e) {
             using(ColorDialog cd = new ColorDialog()) {
+                cd.Color = btnColor.BackColor;
                 if(cd.ShowDialog().Equals(DialogResult.OK)) {
                     btnColor.BackColor = cd.Color;
                     btnColor.Text = cd.Color.Name;
