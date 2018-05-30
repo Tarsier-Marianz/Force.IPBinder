@@ -31,6 +31,10 @@ namespace Force.IPBinder.Forms {
             if(pingCount > 0) {
                 numericUpDownPingCount.Value = pingCount;
             }
+            int delay = _cfgs.Get<int>("ResponseDelay");
+            if(delay >= 0) {
+                numericUpDownDelay.Value = delay;
+            }
             chkAutoSelecteArch.Checked = _cfgs.Get<bool>("AutoSelectArchitecture");
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
@@ -47,6 +51,7 @@ namespace Force.IPBinder.Forms {
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
             _cfgs.Set<int>("PingCount", (int)numericUpDownPingCount.Value);
+            _cfgs.Set<int>("ResponseDelay", (int)numericUpDownDelay.Value);
             _cfgs.Set<bool>("OperationalStatus", chkOperationalStatus.Checked);
             _cfgs.Set<bool>("AutoSelectArchitecture", chkAutoSelecteArch.Checked);
             _cfgs.Set<bool>("ClearBindList", chkClearBindList.Checked);

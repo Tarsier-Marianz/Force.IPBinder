@@ -47,10 +47,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownPingCount = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDownDelay = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // chkClearBindList
@@ -201,6 +205,9 @@
             // 
             // tabPageAppearance
             // 
+            this.tabPageAppearance.Controls.Add(this.label10);
+            this.tabPageAppearance.Controls.Add(this.numericUpDownDelay);
+            this.tabPageAppearance.Controls.Add(this.label11);
             this.tabPageAppearance.Controls.Add(this.chkEnterCmd);
             this.tabPageAppearance.Controls.Add(this.label9);
             this.tabPageAppearance.Controls.Add(this.btnFont);
@@ -221,7 +228,7 @@
             // chkEnterCmd
             // 
             this.chkEnterCmd.AutoSize = true;
-            this.chkEnterCmd.Location = new System.Drawing.Point(133, 167);
+            this.chkEnterCmd.Location = new System.Drawing.Point(133, 221);
             this.chkEnterCmd.Name = "chkEnterCmd";
             this.chkEnterCmd.Size = new System.Drawing.Size(145, 17);
             this.chkEnterCmd.TabIndex = 21;
@@ -233,7 +240,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 81);
+            this.label9.Location = new System.Drawing.Point(6, 135);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 20;
@@ -241,7 +248,7 @@
             // 
             // btnFont
             // 
-            this.btnFont.Location = new System.Drawing.Point(133, 128);
+            this.btnFont.Location = new System.Drawing.Point(133, 182);
             this.btnFont.Name = "btnFont";
             this.btnFont.Size = new System.Drawing.Size(195, 23);
             this.btnFont.TabIndex = 19;
@@ -252,7 +259,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 132);
+            this.label8.Location = new System.Drawing.Point(19, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 18;
@@ -260,7 +267,7 @@
             // 
             // btnColor
             // 
-            this.btnColor.Location = new System.Drawing.Point(133, 99);
+            this.btnColor.Location = new System.Drawing.Point(133, 153);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(195, 23);
             this.btnColor.TabIndex = 17;
@@ -271,7 +278,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 104);
+            this.label7.Location = new System.Drawing.Point(19, 158);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 15;
@@ -280,15 +287,15 @@
             // label6
             // 
             this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(84, 40);
+            this.label6.Location = new System.Drawing.Point(133, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(256, 31);
+            this.label6.Size = new System.Drawing.Size(207, 31);
             this.label6.TabIndex = 14;
             this.label6.Text = "Number of response when IP Address being ping.\r\nValue should be 4 up to 100.";
             // 
             // numericUpDownPingCount
             // 
-            this.numericUpDownPingCount.Location = new System.Drawing.Point(87, 16);
+            this.numericUpDownPingCount.Location = new System.Drawing.Point(136, 16);
             this.numericUpDownPingCount.Minimum = new decimal(new int[] {
             4,
             0,
@@ -312,6 +319,41 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Ping Count:";
             // 
+            // label10
+            // 
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(133, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(207, 31);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Time latency (milliseconds) before displaying cmd response per line.";
+            // 
+            // numericUpDownDelay
+            // 
+            this.numericUpDownDelay.Location = new System.Drawing.Point(136, 74);
+            this.numericUpDownDelay.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownDelay.Name = "numericUpDownDelay";
+            this.numericUpDownDelay.Size = new System.Drawing.Size(96, 21);
+            this.numericUpDownDelay.TabIndex = 23;
+            this.numericUpDownDelay.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 76);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Response Delay:";
+            // 
             // OptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +376,7 @@
             this.tabPageAppearance.ResumeLayout(false);
             this.tabPageAppearance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -362,5 +405,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkEnterCmd;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown numericUpDownDelay;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -48,6 +48,7 @@ namespace Force.IPBinder {
         private string _selectedAutoBind = string.Empty;
         private string _forceBindIP_ExeFile = string.Empty;
         private int _pingCount = 4;
+        private int _responseDelay = 10;
         public IPBinderForm() {
             InitializeComponent();
         }
@@ -74,6 +75,8 @@ namespace Force.IPBinder {
             if(pingCount >= 4 && pingCount <= 100) {
                 _pingCount = pingCount;
             }
+            _responseDelay = _cfgs.Get<int>("ResponseDelay");
+
             Color cmdcolor = _cfgs.Get<Color>("CommandColor");
             if(cmdcolor != null) {
                 _cmdColor = cmdcolor;
@@ -603,7 +606,9 @@ namespace Force.IPBinder {
 
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e) {
             AppendResult(e.Data);
-            Thread.Sleep(10);
+            if(_responseDelay > 0) {
+                Thread.Sleep(10);
+            }
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
