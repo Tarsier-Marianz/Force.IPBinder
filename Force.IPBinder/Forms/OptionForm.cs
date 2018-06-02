@@ -35,18 +35,22 @@ namespace Force.IPBinder.Forms {
             if(delay >= 0) {
                 numericUpDownDelay.Value = delay;
             }
+            Color bc = _cfgs.Get<Color>("CommandColor");
+            if(bc != null) {
+                btnColor.BackColor = bc;
+                btnColor.Text = bc.Name;
+            }
+            Font cf = _cfgs.Get<Font>("CommandFont");
+            if(cf != null) {
+                btnFont.Font = cf;
+                btnFont.Text = cf.Name;
+            }
+
             chkAutoSelecteArch.Checked = _cfgs.Get<bool>("AutoSelectArchitecture");
             chkClearBindList.Checked = _cfgs.Get<bool>("ClearBindList");
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
             chkOperationalStatus.Checked = _cfgs.Get<bool>("OperationalStatus");
             chkEnterCmd.Checked = _cfgs.Get<bool>("ShowEnterCmd");
-
-            Color bc = _cfgs.Get<Color>("CommandColor");
-            btnColor.BackColor = bc;
-            btnColor.Text = bc.Name;
-            Font cf = _cfgs.Get<Font>("CommandFont");
-            btnFont.Font = cf;
-            btnFont.Text = cf.Name;
         }
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
