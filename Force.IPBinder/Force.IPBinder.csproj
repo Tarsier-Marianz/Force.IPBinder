@@ -67,6 +67,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Modem.Pullout.Manager.2015\Unvalidated.Transfer\bin\x86\Release\Newtonsoft.Json.dll</HintPath>
@@ -124,6 +127,7 @@
     </Compile>
     <Compile Include="Helpers\AppStartup.cs" />
     <Compile Include="Helpers\AppVersions.cs" />
+    <Compile Include="Helpers\ProcessKiller.cs" />
     <Compile Include="Models\CLIParameters.cs" />
     <Compile Include="Helpers\ForceBind.cs" />
     <Compile Include="Helpers\LicenseViewer.cs" />
@@ -166,6 +170,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -177,6 +182,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\warning-icon.png" />
     <None Include="Resources\ping_stop.png" />
     <None Include="Resources\ping_start.png" />
     <EmbeddedResource Include="changelog.txt">
