@@ -1,4 +1,6 @@
 ﻿version 1.1 
+  2018-06-08 
+             *change application UAC privileges level to administrator.
   2018-05-30 
              ~option for the time latency before displaying cmd response per line.
   2018-05-21 
