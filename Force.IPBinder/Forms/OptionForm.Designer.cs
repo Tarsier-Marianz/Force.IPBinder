@@ -28,8 +28,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.chkSetPassword = new System.Windows.Forms.CheckBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.linkChange = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.chkOperationalStatus = new System.Windows.Forms.CheckBox();
@@ -38,6 +36,9 @@
             this.chkAutoSelecteArch = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDownDelay = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
             this.chkEnterCmd = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnFont = new System.Windows.Forms.Button();
@@ -47,14 +48,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownPingCount = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDownDelay = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
+            this.tabPageAdmin = new System.Windows.Forms.TabPage();
+            this.chkKillProcess = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).BeginInit();
+            this.tabPageAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // chkClearBindList
@@ -98,30 +105,6 @@
             this.chkSetPassword.UseVisualStyleBackColor = true;
             this.chkSetPassword.CheckedChanged += new System.EventHandler(this.chkSetPassword_CheckedChanged);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(302, 302);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 26);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(221, 302);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 26);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Apply";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // linkChange
             // 
             this.linkChange.AutoSize = true;
@@ -157,6 +140,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPageAdmin);
             this.tabControl1.Controls.Add(this.tabPageAppearance);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -224,6 +208,41 @@
             this.tabPageAppearance.TabIndex = 1;
             this.tabPageAppearance.Text = "Miscellaneous";
             this.tabPageAppearance.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(133, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(207, 31);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Time latency (milliseconds) before displaying cmd response per line.";
+            // 
+            // numericUpDownDelay
+            // 
+            this.numericUpDownDelay.Location = new System.Drawing.Point(136, 74);
+            this.numericUpDownDelay.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownDelay.Name = "numericUpDownDelay";
+            this.numericUpDownDelay.Size = new System.Drawing.Size(96, 21);
+            this.numericUpDownDelay.TabIndex = 23;
+            this.numericUpDownDelay.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 76);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Response Delay:";
             // 
             // chkEnterCmd
             // 
@@ -319,40 +338,88 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Ping Count:";
             // 
-            // label10
+            // tabPageAdmin
             // 
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(133, 98);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(207, 31);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Time latency (milliseconds) before displaying cmd response per line.";
+            this.tabPageAdmin.Controls.Add(this.label13);
+            this.tabPageAdmin.Controls.Add(this.pictureBox1);
+            this.tabPageAdmin.Controls.Add(this.chkKillProcess);
+            this.tabPageAdmin.Controls.Add(this.label12);
+            this.tabPageAdmin.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAdmin.Name = "tabPageAdmin";
+            this.tabPageAdmin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAdmin.Size = new System.Drawing.Size(357, 249);
+            this.tabPageAdmin.TabIndex = 2;
+            this.tabPageAdmin.Text = "Administrative";
+            this.tabPageAdmin.UseVisualStyleBackColor = true;
             // 
-            // numericUpDownDelay
+            // chkKillProcess
             // 
-            this.numericUpDownDelay.Location = new System.Drawing.Point(136, 74);
-            this.numericUpDownDelay.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownDelay.Name = "numericUpDownDelay";
-            this.numericUpDownDelay.Size = new System.Drawing.Size(96, 21);
-            this.numericUpDownDelay.TabIndex = 23;
-            this.numericUpDownDelay.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.chkKillProcess.ForeColor = System.Drawing.Color.Green;
+            this.chkKillProcess.Location = new System.Drawing.Point(22, 23);
+            this.chkKillProcess.Name = "chkKillProcess";
+            this.chkKillProcess.Size = new System.Drawing.Size(292, 17);
+            this.chkKillProcess.TabIndex = 14;
+            this.chkKillProcess.Tag = "KillProcess";
+            this.chkKillProcess.Text = "Kill Process";
+            this.chkKillProcess.UseVisualStyleBackColor = true;
+            this.chkKillProcess.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 76);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Response Delay:";
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.Location = new System.Drawing.Point(43, 43);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(292, 31);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "When application is close it will automatically close all active proccesses if fo" +
+    "und such PING, cmd , etc.";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.Location = new System.Drawing.Point(302, 302);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 26);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(221, 302);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 26);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Apply";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Force.IPBinder.Properties.Resources.warning_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label13
+            // 
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(43, 84);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(292, 48);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "If you know what you are doing, please consider the following risk: processes eve" +
+    "n if not opened or associated of this application may be killed also.";
             // 
             // OptionForm
             // 
@@ -375,8 +442,11 @@
             this.tabPage1.PerformLayout();
             this.tabPageAppearance.ResumeLayout(false);
             this.tabPageAppearance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPingCount)).EndInit();
+            this.tabPageAdmin.ResumeLayout(false);
+            this.tabPageAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -408,5 +478,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown numericUpDownDelay;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabPage tabPageAdmin;
+        private System.Windows.Forms.CheckBox chkKillProcess;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
     }
 }

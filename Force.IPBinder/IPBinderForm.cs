@@ -41,6 +41,7 @@ namespace Force.IPBinder {
         private bool _isSendingCmd = false;
         private bool _isPinging = false;
         private bool _isShowEnterCmd = false;
+        private bool _isKillProcesses = false;
         private string _delayInject = string.Empty;
         private string _password = string.Empty;
         private string _selectedId = string.Empty;
@@ -66,6 +67,7 @@ namespace Force.IPBinder {
             _autoSelectArchi = _cfgs.Get<bool>("AutoSelectArchitecture");
             _setPassword = _cfgs.Get<bool>("SetPassword");
             _isShowEnterCmd = _cfgs.Get<bool>("ShowEnterCmd");
+            _isKillProcesses = _cfgs.Get<bool>("KillProcess");
             _operationalStatusOnly = _cfgs.Get<bool>("OperationalStatus");
             menuToolbar.Checked = _cfgs.Get<bool>("Toolbar");
             menuStatusbar.Checked = _cfgs.Get<bool>("Statusbar");
@@ -476,10 +478,13 @@ namespace Force.IPBinder {
                     e.Cancel = true;
                 } else {
                     //@---TODO---
-                    if(bgWorker.IsBusy) {
+                    //if(bgWorker.IsBusy) {
                         bgWorker.CancelAsync();
                         bgWorker.DoWork -= bgWorker_DoWork;
                         bgWorker.RunWorkerCompleted -= bgWorker_RunWorkerCompleted;
+                    //}
+                    if(_isKillProcesses) {
+                        ProcessKiller.DestroyAll();
                     }
                 }
             }

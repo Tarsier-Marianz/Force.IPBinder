@@ -51,6 +51,7 @@ namespace Force.IPBinder.Forms {
             chkSetPassword.Checked = _cfgs.Get<bool>("SetPassword");
             chkOperationalStatus.Checked = _cfgs.Get<bool>("OperationalStatus");
             chkEnterCmd.Checked = _cfgs.Get<bool>("ShowEnterCmd");
+            chkKillProcess.Checked = _cfgs.Get<bool>("KillProcess");
         }
         private void AppyOptions() {
             Cursor.Current = Cursors.WaitCursor;
@@ -63,6 +64,7 @@ namespace Force.IPBinder.Forms {
             _cfgs.Set<Color>("CommandColor", btnColor.BackColor);
             _cfgs.Set<Font>("CommandFont", btnFont.Font);
             _cfgs.Set<bool>("ShowEnterCmd", chkEnterCmd.Checked);
+            _cfgs.Set<bool>("KillProcess", chkKillProcess.Checked);
             Cursor.Current = Cursors.Default;
         }
 
@@ -119,6 +121,14 @@ namespace Force.IPBinder.Forms {
                     btnColor.Text = cd.Color.Name;
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+
         }
     }
 }
